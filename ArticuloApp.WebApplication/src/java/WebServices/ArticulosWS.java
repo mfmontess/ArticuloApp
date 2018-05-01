@@ -5,6 +5,8 @@
  */
 package WebServices;
 
+import STL.*;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -18,9 +20,47 @@ public class ArticulosWS {
 
     /**
      * This is a sample web service operation
+     * @param txt
+     * @return 
      */
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
+    }
+
+    /**
+     * Método por el cual se registra un Articulo
+     * @param articulo Objeto Articulo a registrar
+     */
+    @WebMethod(operationName = "RegistrarArticulo")
+    public void RegistrarArticulo(@WebParam(name = "articulo") Articulo articulo) {
+    }
+    
+    /**
+     * Método en el cual se actualiza la información de un articulo
+     * @param articulo Objeto Articulo a actualizar
+     */
+    @WebMethod(operationName = "ActualizarArticulo")
+    public void ActualizarArticulo(@WebParam(name = "articulo") Articulo articulo) {
+    }
+    
+    /**
+     * Método en el cual se obtienen los articulos de un cliente
+     * @param cliente Objeto cliente del cual se consultaran sus articulos
+     * @return Lista obtenida de objectos Articulo
+     */
+    @WebMethod(operationName = "ObtenerArticulosPorCliente")
+    public List<Articulo> ObtenerArticulosPorCliente(@WebParam(name = "cliente") Cliente cliente) {
+        return null;
+    }
+    
+    /**
+     * Método en el cual se obtienen los articulos de un cliente
+     * @param estado Estado de los articulos que se quieren consultar
+     * @return Lista obtenida de objectos Articulo
+     */
+    @WebMethod(operationName = "ObtenerArticulosPorEstado")
+    public List<Articulo> ObtenerArticulosPorEstado(@WebParam(name = "estado") Enumeraciones.EstadosArticulo estado) {
+        return null;
     }
 }
