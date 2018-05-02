@@ -15,12 +15,21 @@ import java.util.Date;
  * @author Administrator
  */
 public class Articulo {
+    private int id;
     private String nombre;
     private Enumeraciones.TiposArticulo tipo;
     private Date fechaPublicacion;
     private Enumeraciones.EstadosArticulo estado;
     private Cliente propietario;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNombre() {
         return nombre;
     }

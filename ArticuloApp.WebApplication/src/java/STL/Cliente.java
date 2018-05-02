@@ -14,12 +14,21 @@ import STL.Usuario;
  * @author Administrator
  */
 public class Cliente {
+    private int id;
     private Usuario usuario;
     private String nombre;
     private String direccion;
     private String telefono;
     private String ciudad;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public Usuario getUsuario() {
         return usuario;
     }

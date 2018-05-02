@@ -5,6 +5,7 @@
  */
 package WebServices;
 
+import DAL.ArticuloDAO;
 import STL.*;
 import java.util.List;
 import javax.jws.WebService;
@@ -34,6 +35,8 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "RegistrarArticulo")
     public void RegistrarArticulo(@WebParam(name = "articulo") Articulo articulo) {
+        ArticuloDAO obj = new ArticuloDAO();
+        obj.RegistrarArticulo(articulo);
     }
     
     /**
@@ -42,6 +45,8 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ActualizarArticulo")
     public void ActualizarArticulo(@WebParam(name = "articulo") Articulo articulo) {
+        ArticuloDAO obj = new ArticuloDAO();
+        obj.ActualizarArticulo(articulo);
     }
     
     /**
@@ -51,7 +56,8 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ObtenerArticulosPorCliente")
     public List<Articulo> ObtenerArticulosPorCliente(@WebParam(name = "cliente") Cliente cliente) {
-        return null;
+        ArticuloDAO obj = new ArticuloDAO();
+        return obj.ObtenerArticulosPorCliente(cliente);
     }
     
     /**
@@ -61,6 +67,7 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ObtenerArticulosPorEstado")
     public List<Articulo> ObtenerArticulosPorEstado(@WebParam(name = "estado") Enumeraciones.EstadosArticulo estado) {
-        return null;
+        ArticuloDAO obj = new ArticuloDAO();
+        return obj.ObtenerArticulosPorEstado(estado);
     }
 }
