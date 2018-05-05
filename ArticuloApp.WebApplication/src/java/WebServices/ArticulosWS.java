@@ -35,8 +35,7 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "RegistrarArticulo")
     public void RegistrarArticulo(@WebParam(name = "articulo") Articulo articulo) {
-        ArticuloDAO obj = new ArticuloDAO();
-        obj.RegistrarArticulo(articulo);
+        new ArticuloDAO().RegistrarArticulo(articulo);
     }
     
     /**
@@ -45,8 +44,7 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ActualizarArticulo")
     public void ActualizarArticulo(@WebParam(name = "articulo") Articulo articulo) {
-        ArticuloDAO obj = new ArticuloDAO();
-        obj.ActualizarArticulo(articulo);
+        new ArticuloDAO().ActualizarArticulo(articulo);
     }
     
     /**
@@ -56,8 +54,7 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ObtenerArticulosPorCliente")
     public List<Articulo> ObtenerArticulosPorCliente(@WebParam(name = "cliente") Cliente cliente) {
-        ArticuloDAO obj = new ArticuloDAO();
-        return obj.ObtenerArticulosPorCliente(cliente);
+        return new ArticuloDAO().ObtenerArticulosPorCliente(cliente);
     }
     
     /**
@@ -67,7 +64,6 @@ public class ArticulosWS {
      */
     @WebMethod(operationName = "ObtenerArticulosPorEstado")
     public List<Articulo> ObtenerArticulosPorEstado(@WebParam(name = "estado") Enumeraciones.EstadosArticulo estado) {
-        ArticuloDAO obj = new ArticuloDAO();
-        return obj.ObtenerArticulosPorEstado(estado);
+        return new ArticuloDAO().ObtenerArticulosPorEstado(estado);
     }
 }

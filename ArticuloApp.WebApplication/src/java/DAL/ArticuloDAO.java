@@ -10,6 +10,8 @@ import STL.Cliente;
 import STL.Enumeraciones;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -50,10 +52,64 @@ public class ArticuloDAO {
     }
 
     public List<Articulo> ObtenerArticulosPorCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Articulo> lstArticulos = new ArrayList<>();
+        try{
+            Connection accessBD = Conexion.getConexion();
+            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, foto, cliente_id\n" +
+                    "from articulos a\n" +
+                    "inner join articulos_clientes ac\n" +
+                    "on a.articulo_id = ac.articulo_id "+
+                    "where cliente_id=?");
+            ps.setInt(1, cliente.getId());
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){                
+                Articulo articulo = new Articulo(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        Enumeraciones.TiposArticulo.valueOf(rs.getString(3)),
+                        rs.getDate(4),
+                        Enumeraciones.EstadosArticulo.valueOf(rs.getString(5)),
+                        rs.getString(6),
+                        cliente
+                );
+                lstArticulos.add(articulo);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return lstArticulos;
     }
 
     public List<Articulo> ObtenerArticulosPorEstado(Enumeraciones.EstadosArticulo estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Articulo> lstArticulos = new ArrayList<>();        
+        ClienteDAO clienteDAO = new ClienteDAO();
+        try{
+            Connection accessBD = Conexion.getConexion();
+            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, cliente_id, foto\n" +
+                    "from articulos a\n" +
+                    "inner join articulos_clientes ac\n" +
+                    "on a.articulo_id = ac.articulo_id "+
+                    "where ac.estado=?");
+            ps.setInt(1, estado.ordinal() + 1 );
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                //usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3));
+                Articulo articulo = new Articulo(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        Enumeraciones.TiposArticulo.valueOf(rs.getString(3)),
+                        rs.getDate(4),
+                        estado,
+                        rs.getString(6),
+                        clienteDAO.ObtenerCliente(rs.getInt(7))
+                );
+                lstArticulos.add(articulo);
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return lstArticulos;
     }    
 }

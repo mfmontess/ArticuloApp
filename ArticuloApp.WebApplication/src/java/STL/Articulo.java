@@ -21,7 +21,29 @@ public class Articulo {
     private Date fechaPublicacion;
     private Enumeraciones.EstadosArticulo estado;
     private Cliente propietario;
+    private String foto;
 
+    public Articulo() {        
+    }
+    
+    public Articulo(int id, String nombre, Enumeraciones.TiposArticulo tipo, Date fechaPublicacion, Enumeraciones.EstadosArticulo estado, String foto, Cliente propietario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.fechaPublicacion = fechaPublicacion;
+        this.estado = estado;
+        this.foto = foto;
+        this.propietario = propietario;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
     public int getId() {
         return id;
     }
