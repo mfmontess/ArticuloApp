@@ -18,14 +18,14 @@ public class ClienteDAO {
     public Cliente ObtenerCliente(int id){
         Cliente cliente = null;
         Connection accessBD = Conexion.getConexion();
+        UsuarioDAO objDAO = new UsuarioDAO();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select * from usuarios where nombre=? and contraseña=?");
+            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, ciudad, usuario_id from clientes where cliente_id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                //usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3));
-                cliente = new Cliente();
+                cliente = new Cliente(id,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), objDAO.ObtenerUsuario(rs.getInt(5)));
             }
         } catch(Exception e){
             e.printStackTrace();

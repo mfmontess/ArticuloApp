@@ -11,10 +11,30 @@ package STL;
  * @author Administrator
  */
 public class Usuario {
+    private int id;
     private String nombre;
     private String contraseña;
-    private String correo;
     private Enumeraciones.EstadosUsuario estado;
+    private String foto;
+
+    public Usuario() {
+    }
+
+    public Usuario(int id, String nombre, String contraseña, Enumeraciones.EstadosUsuario estado, String foto) {
+        this.id = id;
+        this.nombre = nombre;
+        this.contraseña = contraseña;
+        this.estado = estado;
+        this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
@@ -32,12 +52,12 @@ public class Usuario {
         this.contraseña = contraseña;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public Enumeraciones.EstadosUsuario getEstado() {

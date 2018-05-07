@@ -6,10 +6,14 @@
 package WebServices;
 
 import DAL.UsuarioDAO;
+import STL.Enumeraciones;
+import STL.RespuestaWS;
 import STL.Usuario;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -32,9 +36,25 @@ public class UsuariosWS {
      * @return 
      */
     @WebMethod(operationName = "RegistrarUsuario")
-    public void RegistrarUsuario(@WebParam(name = "usuario") Usuario usuario) {
-        UsuarioDAO obj = new UsuarioDAO();
-        obj.Registrar(usuario);
+    public RespuestaWS RegistrarUsuario(@WebParam(name = "usuario") Usuario usuario) {
+        RespuestaWS respuesta = new RespuestaWS();        
+        try{
+            respuesta.setObjetoRespuesta(ToJson(usuario));
+            UsuarioDAO obj = new UsuarioDAO();
+            obj.Registrar(usuario);
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
+        } catch(Exception e){
+            respuesta.setMensaje(e.getMessage());
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Fallida);
+        }
+        
+        return respuesta;
+    }
+
+    private String ToJson(Object object) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(object);
+        return json;
     }
     
     /**

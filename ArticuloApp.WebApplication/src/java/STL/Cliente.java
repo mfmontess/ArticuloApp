@@ -15,11 +15,28 @@ import STL.Usuario;
  */
 public class Cliente {
     private int id;
-    private Usuario usuario;
     private String nombre;
     private String direccion;
     private String telefono;
     private String ciudad;
+    private Usuario usuario;
+
+    public Cliente(int id, String nombre, String direccion, String telefono, String ciudad, Usuario usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.ciudad = ciudad;
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public int getId() {
         return id;
@@ -27,14 +44,6 @@ public class Cliente {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public String getNombre() {

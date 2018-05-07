@@ -55,7 +55,7 @@ public class ArticuloDAO {
         ArrayList<Articulo> lstArticulos = new ArrayList<>();
         try{
             Connection accessBD = Conexion.getConexion();
-            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, foto, cliente_id\n" +
+            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, foto\n" +
                     "from articulos a\n" +
                     "inner join articulos_clientes ac\n" +
                     "on a.articulo_id = ac.articulo_id "+
@@ -67,9 +67,9 @@ public class ArticuloDAO {
                 Articulo articulo = new Articulo(
                         rs.getInt(1),
                         rs.getString(2),
-                        Enumeraciones.TiposArticulo.valueOf(rs.getString(3)),
+                        Enumeraciones.TiposArticulo.values()[rs.getInt(3)-1],
                         rs.getDate(4),
-                        Enumeraciones.EstadosArticulo.valueOf(rs.getString(5)),
+                        Enumeraciones.EstadosArticulo.values()[rs.getInt(5)-1],
                         rs.getString(6),
                         cliente
                 );
@@ -86,7 +86,7 @@ public class ArticuloDAO {
         ClienteDAO clienteDAO = new ClienteDAO();
         try{
             Connection accessBD = Conexion.getConexion();
-            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, cliente_id, foto\n" +
+            PreparedStatement ps = accessBD.prepareCall("select articulo_cliente_id, nombre, tipo, fecha_publicacion, ac.estado, foto, cliente_id\n" +
                     "from articulos a\n" +
                     "inner join articulos_clientes ac\n" +
                     "on a.articulo_id = ac.articulo_id "+
@@ -95,11 +95,10 @@ public class ArticuloDAO {
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
-                //usuario = new Usuario(rs.getInt(1),rs.getString(2),rs.getString(3));
                 Articulo articulo = new Articulo(
                         rs.getInt(1),
                         rs.getString(2),
-                        Enumeraciones.TiposArticulo.valueOf(rs.getString(3)),
+                        Enumeraciones.TiposArticulo.values()[rs.getInt(3)-1],
                         rs.getDate(4),
                         estado,
                         rs.getString(6),

@@ -40,4 +40,9 @@ public class Enumeraciones {
     
     public enum EstadosNotificacion{
     }
+    
+    public enum TiposRespuestaWS{
+        Fallida,
+        Exitosa
+    }
 }
