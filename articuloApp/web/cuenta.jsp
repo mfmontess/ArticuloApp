@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Artículo app</title>
+        <title>Articulo app</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet"
@@ -16,7 +16,7 @@
     <body>
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="indexIniciada.jsp">Artículo app</a>
+                <a class="navbar-brand" href="indexIniciada.jsp">Artï¿½culo app</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -35,13 +35,13 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="cuenta.jsp">Cuenta</a>
                                 <a class="dropdown-item" href="misSolicitudes.jsp">Mis solicitudes</a>
-                                <a class="dropdown-item" href="misArticulos.jsp">Mis artículos</a>
-                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar artículo</a>
+                                <a class="dropdown-item" href="misArticulos.jsp">Mis artï¿½culos</a>
+                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar artï¿½culo</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="index.jsp">Cerrar sesion</a>
                             </div>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" href="#">Artículos disponibles
+                        <li class="nav-item active"><a class="nav-link" href="#">Artï¿½culos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item active"><a class="nav-link" href="#">Ayuda
@@ -96,7 +96,7 @@
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                                     <input type="password" name="password" class="form-control" id="password"
-                                           placeholder="Contraseña" required>
+                                           placeholder="Contraseï¿½a" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -104,7 +104,7 @@
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
                                     <input type="password" name="password" class="form-control" id="password"
-                                           placeholder="Confirmar contraseña" required>
+                                           placeholder="Confirmar contraseï¿½a" required>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                                     <input type="text" name="email" class="form-control" id="email"
-                                           placeholder="Correo electrónico" required autofocus>
+                                           placeholder="Correo electrï¿½nico" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group has-danger">
@@ -132,7 +132,7 @@
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                                     <input type="text" name="direccion" class="form-control" id="direccion"
-                                           placeholder="Dirección" required autofocus>
+                                           placeholder="Direcciï¿½n" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group has-danger">
@@ -140,7 +140,7 @@
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
                                     <input type="number" name="telefono" step="13" class="form-control" id="telefono"
-                                           placeholder="Número de teléfono" required autofocus>
+                                           placeholder="Nï¿½mero de telï¿½fono" required autofocus>
                                 </div>
                             </div>
                         </div>

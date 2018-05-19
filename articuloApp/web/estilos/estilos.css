@@ -14,3 +14,7 @@
 #recuadro {
     width: 90px;
 }
+
+.parrafo {
+  padding: inherit;
+}
