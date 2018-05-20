@@ -1,0 +1,16 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#img {
+    height: 30vh;
+}
+
+#slider-principal {
+    height: 50vh;
+}
+
+#recuadro {
+    width: 90px;
+}
