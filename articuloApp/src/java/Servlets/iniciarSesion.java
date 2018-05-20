@@ -7,30 +7,27 @@ package Servlets;
  */
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.WebServiceRef;
-import webservices.ArticulosWS_Service;
-import webservices.RespuestaWS;
-import webservices.UsuariosWS;
-import webservices.UsuariosWS_Service;
+import webservices.*;
 
 /**
  *
  * @author MICHAEL
  */
-@WebServlet(urlPatterns = {"/iniciarSesion"})
+@WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
 public class iniciarSesion extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/WSUsuarios.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.wsdl")
     private UsuariosWS_Service serviceUsuarios;
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/WSUsuarios.wsdl")
-    private ArticulosWS_Service serviceArticulos;
+    //@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl")
+    //private ArticulosWS_Service serviceArticulos;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,23 +41,19 @@ public class iniciarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String nombre = request.getParameter("txtNombre");
-        String contraseña = request.getParameter("txtContraseÃ±a");
+        String nombre = request.getParameter("nombreUsuario");
+        String contraseña = request.getParameter("contrasena");
         
         UsuariosWS port = serviceUsuarios.getUsuariosWSPort();
         RespuestaWS respuesta = port.obtenerUsuario(nombre,contraseña);
         
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet iniciarSesion</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet iniciarSesion at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA){
+                HttpSession sesion= request.getSession();
+                sesion.setAttribute("ValidUsuario", respuesta.getObjetoRespuesta());
+                
+                request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("iniciarSesion.jsp");
         }
     }
 
