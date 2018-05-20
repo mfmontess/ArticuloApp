@@ -6,6 +6,7 @@ package Servlets;
  * and open the template in the editor.
  */
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,7 +41,7 @@ public class iniciarSesion extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
         String nombre = request.getParameter("nombreUsuario");
         String contraseña = request.getParameter("contrasena");
         
@@ -49,7 +50,8 @@ public class iniciarSesion extends HttpServlet {
         
         if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA){
                 HttpSession sesion= request.getSession();
-                sesion.setAttribute("ValidUsuario", respuesta.getObjetoRespuesta());
+                Usuario usuario = new ObjectMapper().readValue(respuesta.getObjetoRespuesta(), Usuario.class);
+                sesion.setAttribute("ValidUsuario", usuario);
                 
                 request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
         }else{
