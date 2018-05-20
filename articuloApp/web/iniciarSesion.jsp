@@ -55,7 +55,7 @@
                     <div class="col-md-6">
                         <fieldset class="scheduler-border">
                             <legend class="scheduler-border">Iniciar Sesión</legend>
-                            <form class="form-horizontal" role="form" method="POST" action="/login">
+                            <form class="form-horizontal" role="form" method="POST" action="iniciarSesion">
                                 <div class="center-input">
                                     <div class="form-group">
 
