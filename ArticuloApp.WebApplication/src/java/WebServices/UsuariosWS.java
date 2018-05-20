@@ -40,8 +40,7 @@ public class UsuariosWS {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
             respuesta.setObjetoRespuesta(ToJson(usuario));
-            UsuarioDAO obj = new UsuarioDAO();
-            obj.Registrar(usuario);
+            new UsuarioDAO().Registrar(usuario);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());
@@ -64,10 +63,16 @@ public class UsuariosWS {
      * @return Retorna objeto usuario con el nombre y contraseña enviados
      */
     @WebMethod(operationName = "ObtenerUsuario")
-    public Usuario ObtenerUsuario(@WebParam(name = "nombre") String nombre,@WebParam(name = "contraseña") String contraseña) {
-        UsuarioDAO db = new UsuarioDAO();
-        Usuario usuario = db.ObtenerUsuario(nombre, contraseña);
-        
-        return usuario;
+    public RespuestaWS ObtenerUsuario(@WebParam(name = "nombre") String nombre,@WebParam(name = "contraseña") String contraseña) {
+        RespuestaWS respuesta = new RespuestaWS();        
+        try{
+            Usuario usuario = new UsuarioDAO().ObtenerUsuario(nombre, contraseña);
+            respuesta.setObjetoRespuesta(ToJson(usuario));
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
+        } catch(Exception e){
+            respuesta.setMensaje(e.getMessage());
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Fallida);
+        }
+        return respuesta;
     }
 }
