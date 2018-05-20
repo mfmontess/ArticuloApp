@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WebServices/">
+
+<xs:element name="ActualizarArticulo" type="tns:ActualizarArticulo"/>
+
+<xs:element name="ActualizarArticuloResponse" type="tns:ActualizarArticuloResponse"/>
+
+<xs:element name="ObtenerArticulosPorCliente" type="tns:ObtenerArticulosPorCliente"/>
+
+<xs:element name="ObtenerArticulosPorClienteResponse" type="tns:ObtenerArticulosPorClienteResponse"/>
+
+<xs:element name="ObtenerArticulosPorEstado" type="tns:ObtenerArticulosPorEstado"/>
+
+<xs:element name="ObtenerArticulosPorEstadoResponse" type="tns:ObtenerArticulosPorEstadoResponse"/>
+
+<xs:element name="RegistrarArticulo" type="tns:RegistrarArticulo"/>
+
+<xs:element name="RegistrarArticuloResponse" type="tns:RegistrarArticuloResponse"/>
+
+<xs:element name="hello" type="tns:hello"/>
+
+<xs:element name="helloResponse" type="tns:helloResponse"/>
+
+<xs:complexType name="ActualizarArticulo">
+<xs:sequence>
+<xs:element name="articulo" type="tns:articulo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="articulo">
+<xs:sequence>
+<xs:element name="estado" type="tns:estadosArticulo" minOccurs="0"/>
+<xs:element name="fechaPublicacion" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="foto" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="propietario" type="tns:cliente" minOccurs="0"/>
+<xs:element name="tipo" type="tns:tiposArticulo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cliente">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="direccion" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:string" minOccurs="0"/>
+<xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="usuario">
+<xs:sequence>
+<xs:element name="contraseña" type="xs:string" minOccurs="0"/>
+<xs:element name="estado" type="tns:estadosUsuario" minOccurs="0"/>
+<xs:element name="foto" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ActualizarArticuloResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="ObtenerArticulosPorEstado">
+<xs:sequence>
+<xs:element name="estado" type="tns:estadosArticulo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ObtenerArticulosPorEstadoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:articulo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ObtenerArticulosPorCliente">
+<xs:sequence>
+<xs:element name="cliente" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ObtenerArticulosPorClienteResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:articulo" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RegistrarArticulo">
+<xs:sequence>
+<xs:element name="articulo" type="tns:articulo" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RegistrarArticuloResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:simpleType name="estadosArticulo">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Activo"/>
+<xs:enumeration value="Solicitado"/>
+<xs:enumeration value="EnIntercambio"/>
+<xs:enumeration value="Donado"/>
+<xs:enumeration value="Intercambiado"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="estadosUsuario">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Activo"/>
+<xs:enumeration value="Inactivo"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tiposArticulo">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Libro"/>
+<xs:enumeration value="VideoJuego"/>
+<xs:enumeration value="JuegoDeMesa"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
