@@ -24,9 +24,6 @@ import webservices.*;
 @WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
 public class iniciarSesion extends HttpServlet {
     
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.wsdl")
-    private UsuariosWS_Service serviceUsuarios;
-    
     //@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl")
     //private ArticulosWS_Service serviceArticulos;
 
@@ -45,10 +42,9 @@ public class iniciarSesion extends HttpServlet {
         String nombre = request.getParameter("nombreUsuario");
         String contraseña = request.getParameter("contrasena");
         
-        UsuariosWS port = serviceUsuarios.getUsuariosWSPort();
-        RespuestaWS respuesta = port.obtenerUsuario(nombre,contraseña);
+        RespuestaWS respuesta = obtenerUsuario(nombre,contraseña);
         
-        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA){
+        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null){
                 HttpSession sesion= request.getSession();
                 Usuario usuario = new ObjectMapper().readValue(respuesta.getObjetoRespuesta(), Usuario.class);
                 sesion.setAttribute("ValidUsuario", usuario);
@@ -98,4 +94,9 @@ public class iniciarSesion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private static RespuestaWS obtenerUsuario(java.lang.String nombre, java.lang.String contraseña) {
+        webservices.UsuariosWS_Service service = new webservices.UsuariosWS_Service();
+        webservices.UsuariosWS port = service.getUsuariosWSPort();
+        return port.obtenerUsuario(nombre, contraseña);
+    }
 }

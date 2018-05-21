@@ -67,6 +67,10 @@ public class UsuariosWS {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
             Usuario usuario = new UsuarioDAO().ObtenerUsuario(nombre, contraseña);
+            
+            if(usuario == null)
+                throw new Exception("Combinación de nombre y contraseña invalida para el usuario");
+            
             respuesta.setObjetoRespuesta(ToJson(usuario));
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
