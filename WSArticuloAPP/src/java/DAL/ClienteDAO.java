@@ -32,4 +32,27 @@ public class ClienteDAO {
         }
         return cliente;
     }
+
+    public void Registrar(Cliente cliente) {
+        Connection accessBD = Conexion.getConexion();
+        try{
+            String sql = "INSERT INTO clientes (nombre,telefono,ciudad,direccion) VALUES (?,?,?,?)";
+            PreparedStatement ps = accessBD.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getTelefono());
+            ps.setString(3, cliente.getCiudad());
+            ps.setString(4, cliente.getDireccion());
+            ps.executeUpdate();
+            
+            ResultSet rs=ps.getGeneratedKeys();
+            
+            if(rs.next())
+                cliente.setId(rs.getInt(1));
+            
+            ps.close();
+            new UsuarioDAO().Registrar(cliente.getUsuario(), cliente.getId());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

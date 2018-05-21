@@ -5,6 +5,7 @@
  */
 package WebServices;
 
+import static BLL.Utilidades.ToJson;
 import DAL.UsuarioDAO;
 import STL.Enumeraciones;
 import STL.RespuestaWS;
@@ -12,8 +13,6 @@ import STL.Usuario;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  *
@@ -33,14 +32,15 @@ public class UsuariosWS {
     /**
      * Método en el caul se registra un usuario a base de datos
      * @param usuario objeto a registrar
-     * @return 
+     * @param clienteID id del cliente asociado al usuario a crear
+     * @return Objeto respuesta
      */
     @WebMethod(operationName = "RegistrarUsuario")
-    public RespuestaWS RegistrarUsuario(@WebParam(name = "usuario") Usuario usuario) {
+    public RespuestaWS RegistrarUsuario(@WebParam(name = "usuario") Usuario usuario, @WebParam(name = "clienteID") int clienteID) {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
             respuesta.setObjetoRespuesta(ToJson(usuario));
-            new UsuarioDAO().Registrar(usuario);
+            new UsuarioDAO().Registrar(usuario,clienteID);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());
@@ -48,12 +48,6 @@ public class UsuariosWS {
         }
         
         return respuesta;
-    }
-
-    private String ToJson(Object object) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(object);
-        return json;
     }
     
     /**

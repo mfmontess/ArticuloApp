@@ -33,12 +33,13 @@ public class UsuarioDAO {
         return usuario;
     }
 
-    public void Registrar(Usuario usuario) {
+    public void Registrar(Usuario usuario, int clienteId) {
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("INSERT INTO usuarios (nombre,contraseña) VALUES (?,?)");
+            PreparedStatement ps = accessBD.prepareCall("INSERT INTO usuarios (nombre,contraseña,cliente_id) VALUES (?,?,?)");
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getContraseña());
+            ps.setInt(3, clienteId);
             ps.executeUpdate();
             ps.close();
         } catch(Exception e){
