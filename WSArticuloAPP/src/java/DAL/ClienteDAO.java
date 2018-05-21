@@ -20,7 +20,7 @@ public class ClienteDAO {
         Connection accessBD = Conexion.getConexion();
         UsuarioDAO objDAO = new UsuarioDAO();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, ciudad, usuario_id from clientes where cliente_id=?");
+            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, correo, usuario_id from clientes where cliente_id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
@@ -36,11 +36,11 @@ public class ClienteDAO {
     public void Registrar(Cliente cliente) {
         Connection accessBD = Conexion.getConexion();
         try{
-            String sql = "INSERT INTO clientes (nombre,telefono,ciudad,direccion) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO clientes (nombre,telefono,correo,direccion) VALUES (?,?,?,?)";
             PreparedStatement ps = accessBD.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getTelefono());
-            ps.setString(3, cliente.getCiudad());
+            ps.setString(3, cliente.getCorreo());
             ps.setString(4, cliente.getDireccion());
             ps.executeUpdate();
             

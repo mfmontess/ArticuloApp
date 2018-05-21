@@ -18,15 +18,23 @@ public class Cliente {
     private String nombre;
     private String direccion;
     private String telefono;
-    private String ciudad;
+    private String correo;
     private Usuario usuario;
 
-    public Cliente(int id, String nombre, String direccion, String telefono, String ciudad, Usuario usuario) {
+    public Cliente(int id, String nombre, String direccion, String telefono, String correo, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.ciudad = ciudad;
+        this.correo = correo;
+        this.usuario = usuario;
+    }
+    
+    public Cliente(String nombre, String direccion, String telefono, String correo, Usuario usuario) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.correo = correo;
         this.usuario = usuario;
     }
 
@@ -70,11 +78,11 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }
