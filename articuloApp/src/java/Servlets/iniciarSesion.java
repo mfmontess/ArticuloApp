@@ -43,7 +43,7 @@ public class iniciarSesion extends HttpServlet {
             throws ServletException, IOException {
         
         String nombre = request.getParameter("nombreUsuario");
-    String contraseña = request.getParameter("contrasena");
+        String contraseña = request.getParameter("contrasena");
         
         UsuariosWS port = serviceUsuarios.getUsuariosWSPort();
         RespuestaWS respuesta = port.obtenerUsuario(nombre,contraseña);
