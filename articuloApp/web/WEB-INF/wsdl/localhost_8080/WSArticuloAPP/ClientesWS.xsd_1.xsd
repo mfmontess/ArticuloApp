@@ -1,21 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://WebServices/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://WebServices/">
 
-<xs:element name="ObtenerUsuario" type="tns:ObtenerUsuario"/>
+<xs:element name="RegistrarCliente" type="tns:RegistrarCliente"/>
 
-<xs:element name="ObtenerUsuarioResponse" type="tns:ObtenerUsuarioResponse"/>
-
-<xs:element name="RegistrarUsuario" type="tns:RegistrarUsuario"/>
-
-<xs:element name="RegistrarUsuarioResponse" type="tns:RegistrarUsuarioResponse"/>
+<xs:element name="RegistrarClienteResponse" type="tns:RegistrarClienteResponse"/>
 
 <xs:element name="hello" type="tns:hello"/>
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
-<xs:complexType name="RegistrarUsuario">
+<xs:complexType name="RegistrarCliente">
 <xs:sequence>
+<xs:element name="cliente" type="tns:cliente" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="cliente">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="direccion" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="telefono" type="xs:string" minOccurs="0"/>
 <xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
-<xs:element name="clienteID" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -29,7 +35,7 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="RegistrarUsuarioResponse">
+<xs:complexType name="RegistrarClienteResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:respuestaWS" minOccurs="0"/>
 </xs:sequence>
@@ -52,19 +58,6 @@
 <xs:complexType name="helloResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ObtenerUsuario">
-<xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0"/>
-<xs:element name="contraseña" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ObtenerUsuarioResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:respuestaWS" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
