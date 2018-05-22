@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <%@page contentType="text/html"%>
         <%@page pageEncoding="UTF-8"%>
@@ -77,7 +77,7 @@
                                             <input type="submit" class="btn btn-success" name="enviar" value="Iniciar Sesión">
                                         </label>
                                     </div>
-                                    <a href="registrarse.html">Registrarse</a>,
+                                    <a href="registrarse.jsp">Registrarse</a>,
                                     <a href="/password/reset">Olvidé contraseña</a>
                                 </footer>
                             </form>
