@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <title>Articulo app</title>
-        <meta charset="utf-8">
+        <%@page contentType="text/html"%>
+        <%@page pageEncoding="UTF-8"%>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Artículo app</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="estilos/estilos.css">
         <link rel="stylesheet"
               href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script
@@ -13,19 +16,26 @@
         <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body class="body-background">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="indexIniciada.jsp">Art�culo app</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="indexIniciada.jsp">ArtÃ­culo app</a>
+                </div>
+                <div class="navbar">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto text-center">
-                        <li class="nav-item active"><a class="nav-link" href="#">Finalidad
+                        <li class="nav-item active"><a class="nav-link" href="indexIniciada.jsp">Inicio
+                                <span class="sr-only">(current)</span>
+                            </a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item dropdown">
@@ -35,16 +45,16 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="cuenta.jsp">Cuenta</a>
                                 <a class="dropdown-item" href="misSolicitudes.jsp">Mis solicitudes</a>
-                                <a class="dropdown-item" href="misArticulos.jsp">Mis art�culos</a>
-                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar art�culo</a>
+                                <a class="dropdown-item" href="misArticulos.jsp">Mis artÃ­culos</a>
+                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar artÃ­culo</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.jsp">Cerrar sesion</a>
+                                <a class="dropdown-item" href="index.jsp">Cerrar sesiÃ³n</a>
                             </div>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" href="#">Art�culos disponibles
+                        <li class="nav-item"><a class="nav-link" href="#">ArtÃ­culos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item active"><a class="nav-link" href="#">Ayuda
+                        <li class="nav-item"><a class="nav-link" href="#">Ayuda
                                 <span class="sr-only">(current)</span>
                             </a></li>
                     </ul>
@@ -52,115 +62,70 @@
             </nav>
 
             <div class="container">
-                <form class="form-horizontal" role="form" method="POST" action="/login">
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <h2>Cuenta</h2>
-                            <hr>
-                        </div>
-                    </div>
-
-                    <div class="row"   style="margin: 20px">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-3">
-                            <img src="Image/imagen.jpg" class="img-thumbnail img-responsive" width="50%" height="50%" alt="">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="form-group has-danger">
-                                <label class="sr-only" for="usuario">Usuario</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                    <input type="text" name="usuario" class="form-control" id="usuario"
-                                           placeholder="Nombre Usuario" required autofocus>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <fieldset class="scheduler-border">
+                            <legend class="scheduler-border">Cuenta</legend>
+                            <form class="form-horizontal" role="form" method="POST" action="cuenta">
+                                <div class="center-input">
+                                    <div class="form-group">
+                                        <div class="image-upload">
+                                            <label for="file-input">
+                                                <img src="./Image/imagen.jpg" alt ="Click aquí para subir tu foto" title ="Click aquí para subir tu foto" >
+                                            </label>
+                                            <input id="file-input" accept="image/jpeg,image/x-png, .png" name="foto" type="file"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nombreCliente">
+                                            <input type="text" class="form-control" name="nombreCliente" value="" placeholder="Nombre Cliente" id="nombreCliente" required autofocus>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="contrasena">
+                                            <input type="password" class="form-control" name="contrasena" value="" placeholder="Contraseña" id="contrasena" required>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmarContrasena">
+                                            <input type="password" class="form-control" name="confirmarContrasena" value="" placeholder="Confirmar Contraseña" id="confirmarContrasena" required>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo">
+                                            <input type="email" name="correo" class="form-control" value="" placeholder="Correo Electrónico" id="correo" required>
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="direccion">
+                                            <input type="text" class="form-control" name="direccion" value="" placeholder="Dirección" id="direccion">
+                                        </label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">
+                                            <input type="tel" name="telefono" class="form-control" value="" placeholder="Numero de teléfono" id="telefono">
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-control-feedback">
-                                <span class="text-danger align-middle">
-                                    <i class="fa fa-close"></i>
-                                </span>
-                            </div>
-                        </div>
+                                <footer class="text-center">
+                                    <div class="form-group">
+                                        <label for="actualizar">
+                                            <input type="submit" class="btn btn-success" name="actualizar" value="Actualizar cuenta" >
+                                        </label>
+                                        <label for="eliminarCuenta">
+                                            <input type="submit" class="btn btn-danger" name="eliminarCuenta" value="Eliminar cuenta" >
+                                        </label>
+                                    </div>
+                                </footer>
+                            </form>
+                        </fieldset>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="sr-only" for="password">Password</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                           placeholder="Contrase�a" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="sr-only" for="password">Password</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                    <input type="password" name="password" class="form-control" id="password"
-                                           placeholder="Confirmar contrase�a" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-control-feedback">
-                                <span class="text-danger align-middle">
-                                    <!-- Put password error message here -->
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="form-group has-danger">
-                                <label class="sr-only" for="email">E-Mail Address</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                    <input type="text" name="email" class="form-control" id="email"
-                                           placeholder="Correo electr�nico" required autofocus>
-                                </div>
-                            </div>
-                            <div class="form-group has-danger">
-                                <label class="sr-only" for="usuario">Direccion</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                    <input type="text" name="direccion" class="form-control" id="direccion"
-                                           placeholder="Direcci�n" required autofocus>
-                                </div>
-                            </div>
-                            <div class="form-group has-danger">
-                                <label class="sr-only" for="usuario">Telefono</label>
-                                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                                    <input type="number" name="telefono" step="13" class="form-control" id="telefono"
-                                           placeholder="N�mero de tel�fono" required autofocus>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-control-feedback">
-                                <span class="text-danger align-middle">
-                                    <i class="fa fa-close"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: -3rem">
-                        <div class="col-md-5"></div>
-                        <div class="col-md-6">
-                            <button type="submit" class="btn btn-success "><i class="fa fa-sign-in"></i>Actualizar</button>
-                            <button type="submit" class="btn btn-success "><i class="fa fa-sign-in"></i>Eliminar cuenta</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
+        <footer class="text-center">
+            <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
+        </footer>
     </body>
 </html>

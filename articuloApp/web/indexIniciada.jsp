@@ -38,9 +38,9 @@
                         <li class="nav-item"><a class="nav-link" href="#">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item dropdown ">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cuenta
+                                Mi Perfil
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="cuenta.jsp">Cuenta</a>

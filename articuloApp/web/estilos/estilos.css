@@ -53,3 +53,13 @@ legend.scheduler-border {
 input::-webkit-input-placeholder {
     font-size: 14px;
 }
+
+.image-upload > input {
+    display: none;
+}
+
+.image-upload img {
+    margin-left: 40px;
+    width: 100px;
+    cursor: pointer;
+}
