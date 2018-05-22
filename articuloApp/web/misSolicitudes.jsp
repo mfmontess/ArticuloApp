@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,7 +52,29 @@
                 </div>
             </nav>
             <h2>Mis solicitudes</h2>
-            <br>
+            <c:forEach items="${solicitudes}" var="solicitud">
+                <div class="container-fluid" style="margin:20px">
+                    <div class="row">
+                        <div class="col">
+
+                            <div style="margin:10px" >
+                                <img src="Image/${solicitud.articuloEmisor.foto}" class="img-thumbnail"alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-10 border border-dark">
+                            <div class="" style="margin:10px">
+                                <h4 >Descripción del articulo</h4>
+                                <p>${solicitud.descripcion}</p>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-success">Aceptar</button>
+                                    <button type="button" class="btn btn-warning">Rechazar</button>
+                                    <button type="button" class="btn btn-danger">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
             <div class="container-fluid" style="margin:20px">
                 <div class="row">
                     <div class="col">

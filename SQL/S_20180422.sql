@@ -1,4 +1,4 @@
-﻿CREATE DATABASE ArticuloApp_BD;
+CREATE DATABASE ArticuloApp_BD;
 
 USE ArticuloApp_BD;
 
@@ -23,6 +23,7 @@ CREATE TABLE clientes (
     nombre VARCHAR(200),
     direccion VARCHAR(100),
     telefono VARCHAR(10),
+    correo VARCHAR(100),
     PRIMARY KEY (cliente_id)
 );
 

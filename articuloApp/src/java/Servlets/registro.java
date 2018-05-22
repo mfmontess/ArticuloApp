@@ -1,31 +1,26 @@
-package Servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlets;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceRef;
-import webservices.*;
+import webservices.Cliente;
+import webservices.RespuestaWS;
+import webservices.TiposRespuestaWS;
 
 /**
  *
- * @author MICHAEL
+ * @author mmontes
  */
-@WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
-public class iniciarSesion extends HttpServlet {
-    
-    //@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl")
-    //private ArticulosWS_Service serviceArticulos;
+@WebServlet(name = "registro", urlPatterns = {"/registro"})
+public class registro extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,20 +34,20 @@ public class iniciarSesion extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nombre = request.getParameter("nombreUsuario");
-        String contraseña = request.getParameter("contrasena");
+        String usuario = request.getParameter("usuario");
+        String password = request.getParameter("password");
+        String nombre = request.getParameter("nombre");
+        String email = request.getParameter("email");
+        String direccion = request.getParameter("direccion");
+        String telefono = request.getParameter("telefono");
         
-        RespuestaWS respuesta = obtenerUsuario(nombre,contraseña);
+        Cliente cliente = null; //= new Cliente(nombre,direccion,telefono,email,new Usuario(usuario,password));
+        RespuestaWS respuesta = registrarCliente(cliente);
         
-        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null){
-                HttpSession sesion= request.getSession();
-                Usuario usuario = new ObjectMapper().readValue(respuesta.getObjetoRespuesta(), Usuario.class);
-                sesion.setAttribute("ValidUsuario", usuario);
-                
-                request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
-        }else{
-            response.sendRedirect("iniciarSesion.jsp");
-        }
+        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null)
+                response.sendRedirect("iniciarSesion.jsp");
+        else
+            response.sendRedirect("registrarse.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -94,9 +89,10 @@ public class iniciarSesion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private static RespuestaWS obtenerUsuario(java.lang.String nombre, java.lang.String contraseña) {
-        webservices.UsuariosWS_Service service = new webservices.UsuariosWS_Service();
-        webservices.UsuariosWS port = service.getUsuariosWSPort();
-        return port.obtenerUsuario(nombre, contraseña);
+    private static RespuestaWS registrarCliente(webservices.Cliente cliente) {
+        webservices.ClientesWS_Service service = new webservices.ClientesWS_Service();
+        webservices.ClientesWS port = service.getClientesWSPort();
+        return port.registrarCliente(cliente);
     }
+
 }

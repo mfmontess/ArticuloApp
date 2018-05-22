@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
         <%@page contentType="text/html"%>
         <%@page pageEncoding="UTF-8"%>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -53,6 +54,32 @@
             </nav>
             <h2>Mis artículos</h2>
             <br>
+            
+            <c:forEach items="${articulos}" var="articulo">
+                <div class="container-fluid" id="img">
+                    <div class="row">
+                        <div class="col">
+                            <div style="margin:10px" >
+                                <img src="Image/${articulo.foto}" class="img-thumbnail"alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-10 border border-dark">
+                            <div style="margin:10px;">
+                                <h4 >Descripción del articulo</h4>
+                                <p>${articulo.nombre}</p>
+
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-success">Editar</button>
+                                    <button type="button" class="btn btn-success">Donar</button>
+                                    <button type="button" class="btn btn-success">Intercambiar</button>
+                                    <button type="button" class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
 
 
             <div class="container-fluid" id="img">
@@ -103,7 +130,6 @@
             <div Align="right">
                 <a href="registrarArticulo.jsp"><button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i>Registrar Artículo</button></a>
             </div>
-            <
         </div>
     </body>
 </html>
