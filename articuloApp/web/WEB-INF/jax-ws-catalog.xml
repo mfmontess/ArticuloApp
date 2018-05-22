@@ -6,4 +6,6 @@
     <system systemId="http://localhost:8080/WSArticuloAPP/UsuariosWS?xsd=1" uri="wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ArticulosWS?wsdl" uri="wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ArticulosWS?xsd=1" uri="wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSArticuloAPP/ClientesWS?wsdl" uri="wsdl/localhost_8080/WSArticuloAPP/ClientesWS.wsdl"/>
+    <system systemId="http://localhost:8080/WSArticuloAPP/ClientesWS?xsd=1" uri="wsdl/localhost_8080/WSArticuloAPP/ClientesWS.xsd_1.xsd"/>
 </catalog>

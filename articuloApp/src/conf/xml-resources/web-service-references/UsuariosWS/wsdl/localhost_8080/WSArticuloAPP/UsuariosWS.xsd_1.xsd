@@ -15,6 +15,7 @@
 <xs:complexType name="RegistrarUsuario">
 <xs:sequence>
 <xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
+<xs:element name="clienteID" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
