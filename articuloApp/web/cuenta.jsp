@@ -20,7 +20,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="indexIniciada.jsp">ArtÃ­culo app</a>
+                    <a class="navbar-brand" href="indexIniciada.jsp">Artí­culo app</a>
                 </div>
                 <div class="navbar">
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -32,26 +32,26 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto text-center">
-                        <li class="nav-item active"><a class="nav-link" href="indexIniciada.jsp">Inicio
+                        <li class="nav-item"><a class="nav-link" href="indexIniciada.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown active">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mi Perfil
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="cuenta.jsp">Cuenta</a>
                                 <a class="dropdown-item" href="misSolicitudes.jsp">Mis solicitudes</a>
-                                <a class="dropdown-item" href="misArticulos.jsp">Mis artÃ­culos</a>
-                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar artÃ­culo</a>
+                                <a class="dropdown-item" href="misArticulos.jsp">Mis artículos</a>
+                                <a class="dropdown-item" href="registrarArticulo.jsp">Registrar artículo</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.jsp">Cerrar sesiÃ³n</a>
+                                <a class="dropdown-item" href="index.jsp">Cerrar sesión</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">ArtÃ­culos disponibles
+                        <li class="nav-item"><a class="nav-link" href="#">Artículos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Ayuda

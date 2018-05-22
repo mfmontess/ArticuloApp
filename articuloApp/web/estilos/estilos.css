@@ -63,3 +63,15 @@ input::-webkit-input-placeholder {
     width: 100px;
     cursor: pointer;
 }
+
+.portadas {
+  /* margin-left: 40px; */
+  margin: auto;
+  width: 180px;
+  cursor: pointer;
+}
+
+aside{
+    float: left;
+    width: 200px;
+}
