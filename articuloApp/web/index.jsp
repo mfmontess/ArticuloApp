@@ -23,16 +23,16 @@
                     <a class="navbar-brand" href="index.jsp">Artículo app</a>
                 </div>
                 <div class="navbar">
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1"
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
                             aria-controls="navbarSupportedContent" aria-expanded="false"
                             aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>hola
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mc-auto text-center">
+                    <ul class="navbar-nav mr-auto text-center">
                         <li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>

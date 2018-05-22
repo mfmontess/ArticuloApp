@@ -48,7 +48,6 @@ public class iniciarSesion extends HttpServlet {
                 HttpSession sesion= request.getSession();
                 Usuario usuario = new ObjectMapper().readValue(respuesta.getObjetoRespuesta(), Usuario.class);
                 sesion.setAttribute("ValidUsuario", usuario);
-                
                 request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
         }else{
             response.sendRedirect("iniciarSesion.jsp");

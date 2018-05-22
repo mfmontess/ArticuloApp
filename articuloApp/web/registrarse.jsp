@@ -4,7 +4,7 @@
         <%@page contentType="text/html"%>
         <%@page pageEncoding="UTF-8"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ArtÃ­culo app</title>
+        <title>Artí­culo app</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="estilos/estilos.css">
         <link rel="stylesheet"
@@ -23,12 +23,12 @@
                     <a class="navbar-brand" href="index.jsp">Artículo app</a>
                 </div>
                 <div class="navbar">
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                          data-target="#navbarSupportedContent"
+                          aria-controls="navbarSupportedContent" aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

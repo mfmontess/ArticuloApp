@@ -23,12 +23,12 @@
                     <a class="navbar-brand" href="index.jsp">Artículo app</a>
                 </div>
                 <div class="navbar">
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                          data-target="#navbarSupportedContent"
+                          aria-controls="navbarSupportedContent" aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
