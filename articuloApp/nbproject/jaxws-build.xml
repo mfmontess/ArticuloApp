@@ -42,21 +42,5 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
         <delete dir="${build.generated.dir}/jax-wsCache/UsuariosWS"/>
     </target>
-    <target name="wsimport-client-ArticulosWS" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/ArticulosWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ArticulosWS" destdir="${build.generated.dir}/jax-wsCache/ArticulosWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ArticulosWS/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WSArticuloAPP/ArticulosWS?wsdl" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ArticulosWS/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/ArticulosWS"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/ArticulosWS">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-ArticulosWS" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/ArticulosWS"/>
-    </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-UsuariosWS, wsimport-client-ArticulosWS"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-UsuariosWS"/>
 </project>
