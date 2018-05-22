@@ -49,3 +49,7 @@ legend.scheduler-border {
 .background {
   background-color: #353A40;
 }
+
+input::-webkit-input-placeholder {
+    font-size: 14px;
+}

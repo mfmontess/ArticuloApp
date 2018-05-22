@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <%@page contentType="text/html"%>
         <%@page pageEncoding="UTF-8"%>
@@ -58,11 +58,9 @@
                             <form class="form-horizontal" role="form" method="POST" action="iniciarSesion">
                                 <div class="center-input">
                                     <div class="form-group">
-
                                         <label class="" for="nombreUsuario">
                                             <input type="text" class="form-control" name="nombreUsuario" value="" placeholder="Usuario" id="nombreUsuario" required autofocus>
                                         </label>
-
                                     </div>
                                     <div class="form-group">
                                         <label for="contrasena">
