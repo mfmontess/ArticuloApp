@@ -10,6 +10,9 @@
     <service name="ClientesWS">
       <implementation-class>WebServices.ClientesWS</implementation-class>
     </service>
+    <service name="SolicitudesWS">
+      <implementation-class>WebServices.SolicitudesWS</implementation-class>
+    </service>
   </services>
   <clients/>
 </jax-ws>

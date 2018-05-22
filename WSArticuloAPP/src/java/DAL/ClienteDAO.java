@@ -55,4 +55,24 @@ public class ClienteDAO {
             e.printStackTrace();
         }
     }
+
+    public void Actualizar(Cliente cliente) {
+        Connection accessBD = Conexion.getConexion();
+        try{
+            String sql = "UPDATE clientes SET nombre=?, telefono=?, correo=?, direccion=? WHERE cliente_id=?";
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getTelefono());
+            ps.setString(3, cliente.getCorreo());
+            ps.setString(4, cliente.getDireccion());
+            ps.setInt(4, cliente.getId());
+            ps.executeUpdate();
+            
+            ps.close();            
+            
+            new UsuarioDAO().Actualizar(cliente.getUsuario(), cliente.getId());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

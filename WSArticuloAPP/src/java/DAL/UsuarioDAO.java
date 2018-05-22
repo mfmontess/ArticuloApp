@@ -63,4 +63,20 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+
+    void Actualizar(Usuario usuario, int clienteId) {
+        Connection accessBD = Conexion.getConexion();
+        try{
+            PreparedStatement ps = accessBD.prepareCall("UPDATE usuarios SET nombre=?, contraseña=?, foto=?, estado=? WHERE cliente_id=?");
+            ps.setString(1, usuario.getNombre());
+            ps.setString(2, usuario.getContraseña());
+            ps.setString(3, usuario.getFoto());
+            ps.setInt(4, usuario.getEstado().ordinal()+1);
+            ps.setInt(5, clienteId);
+            ps.executeUpdate();
+            ps.close();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
