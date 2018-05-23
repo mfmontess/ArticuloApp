@@ -19,6 +19,12 @@ public class Usuario {
 
     public Usuario() {
     }
+    
+    public Usuario(String usuario, String password) {
+        this.nombre = usuario;
+        this.contraseña = password;
+        this.estado = Enumeraciones.EstadosUsuario.Activo;
+    }
 
     public Usuario(int id, String nombre, String contraseña, Enumeraciones.EstadosUsuario estado, String foto) {
         this.id = id;

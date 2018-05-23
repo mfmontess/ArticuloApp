@@ -5,7 +5,6 @@
  */
 package WebServices;
 
-import static BLL.Utilidades.ToJson;
 import DAL.ClienteDAO;
 import STL.Cliente;
 import STL.Enumeraciones;
@@ -38,8 +37,50 @@ public class ClientesWS {
     public RespuestaWS RegistrarCliente(@WebParam(name = "cliente") Cliente cliente) {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
-            respuesta.setObjetoRespuesta(ToJson(cliente));
+            respuesta.setObjetoRespuesta(cliente);
             new ClienteDAO().Registrar(cliente);
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
+        } catch(Exception e){
+            respuesta.setMensaje(e.getMessage());
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Fallida);
+        }
+        
+        return respuesta;
+    }
+    
+    /**
+     * Metodo en el cual se realizará la actualizacion de un cliente
+     * @param cliente Objeto Cliente a registrar
+     * @return Objeto respuesta
+     */
+    @WebMethod(operationName = "ActualizarCliente")
+    public RespuestaWS ActualizarCliente(@WebParam(name = "cliente") Cliente cliente) {
+        RespuestaWS respuesta = new RespuestaWS();
+        try{
+            respuesta.setObjetoRespuesta(cliente);
+            new ClienteDAO().Actualizar(cliente);
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
+        } catch(Exception e){
+            respuesta.setMensaje(e.getMessage());
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Fallida);
+        }
+        
+        return respuesta;
+    }
+    
+    /**
+     * Metodo en el cual se obtiene cliente por su id
+     * @param cliente Objeto Cliente a registrar
+     * @return Objeto respuesta
+     */
+    @WebMethod(operationName = "ObtenerClientePorUsuarioId")
+    public RespuestaWS ObtenerClientePorUsuarioId(@WebParam(name = "usuarioId") int usuarioId) {
+        RespuestaWS respuesta = new RespuestaWS();
+        try{
+            Cliente cliente = new ClienteDAO().ObtenerClientePorUsuarioId(usuarioId);
+            if(cliente == null)
+                throw new Exception("Cliente no obtenido para el usuario");
+            respuesta.setObjetoRespuesta(cliente);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());
