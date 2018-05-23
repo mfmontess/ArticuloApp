@@ -5,7 +5,6 @@
  */
 package WebServices;
 
-import static BLL.Utilidades.ToJson;
 import DAL.UsuarioDAO;
 import STL.Enumeraciones;
 import STL.RespuestaWS;
@@ -39,8 +38,8 @@ public class UsuariosWS {
     public RespuestaWS RegistrarUsuario(@WebParam(name = "usuario") Usuario usuario, @WebParam(name = "clienteID") int clienteID) {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
-            respuesta.setObjetoRespuesta(ToJson(usuario));
             new UsuarioDAO().Registrar(usuario,clienteID);
+            respuesta.setObjetoRespuesta(usuario);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());
@@ -65,7 +64,9 @@ public class UsuariosWS {
             if(usuario == null)
                 throw new Exception("Combinación de nombre y contraseña invalida para el usuario");
             
-            respuesta.setObjetoRespuesta(ToJson(usuario));
+            respuesta.setObjetoRespuesta(usuario);
+            Usuario usuariop = new Usuario();
+            usuariop = (Usuario) respuesta.getObjetoRespuesta();
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());

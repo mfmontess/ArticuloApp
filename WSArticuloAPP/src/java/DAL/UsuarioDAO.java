@@ -19,7 +19,7 @@ public class UsuarioDAO {
         Usuario usuario = null;
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select usuario_id, nombre, contraseña, estado, foto from usuarios where nombre=? and contraseña=?");
+            PreparedStatement ps = accessBD.prepareCall("select usuario_id, nombre, contrasena, estado, foto from usuarios where nombre=? and contrasena=?");
             ps.setString(1, nombre);
             ps.setString(2, contraseña);
             ResultSet rs = ps.executeQuery();
@@ -36,11 +36,17 @@ public class UsuarioDAO {
     public void Registrar(Usuario usuario, int clienteId) {
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("INSERT INTO usuarios (nombre,contraseña,cliente_id) VALUES (?,?,?)");
+            PreparedStatement ps = accessBD.prepareStatement("INSERT INTO usuarios (nombre,contrasena,estado,cliente_id) VALUES (?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getContraseña());
+            ps.setInt(2, usuario.getEstado().ordinal() +1);
             ps.setInt(3, clienteId);
             ps.executeUpdate();
+            
+            ResultSet rs=ps.getGeneratedKeys();
+            
+            if(rs.next())
+                usuario.setId(rs.getInt(1));
             ps.close();
         } catch(Exception e){
             e.printStackTrace();
@@ -51,7 +57,7 @@ public class UsuarioDAO {
         Usuario usuario = null;
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select usuario_id, nombre, contraseña, estado, foto from usuarios where usuario_id=?");
+            PreparedStatement ps = accessBD.prepareCall("select usuario_id, nombre, contrasena, estado, foto from usuarios where usuario_id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
@@ -67,7 +73,7 @@ public class UsuarioDAO {
     void Actualizar(Usuario usuario, int clienteId) {
         Connection accessBD = Conexion.getConexion();
         try{
-            PreparedStatement ps = accessBD.prepareCall("UPDATE usuarios SET nombre=?, contraseña=?, foto=?, estado=? WHERE cliente_id=?");
+            PreparedStatement ps = accessBD.prepareCall("UPDATE usuarios SET nombre=?, contrasena=?, foto=?, estado=? WHERE cliente_id=?");
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getContraseña());
             ps.setString(3, usuario.getFoto());

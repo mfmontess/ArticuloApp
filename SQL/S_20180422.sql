@@ -1,16 +1,14 @@
-CREATE DATABASE ArticuloApp_BD;
+CREATE DATABASE articuloApp_BD;
 
-USE ArticuloApp_BD;
-
-CREATE TABLE dominios (
-    dominio_id INT,
+CREATE TABLE articuloapp_bd.dominios (
+    dominio_id INT AUTO_INCREMENT,
     nombre VARCHAR(100),
     descripcion VARCHAR(200),
     PRIMARY KEY (dominio_id)
 );
 
-CREATE TABLE detalles_dominios (
-    detalle_dominio_id INT,
+CREATE TABLE articuloapp_bd.detalles_dominios (
+    detalle_dominio_id INT AUTO_INCREMENT,
     dominio_id INT,
     valor VARCHAR(10),
     descripcion VARCHAR(50),
@@ -18,8 +16,8 @@ CREATE TABLE detalles_dominios (
     FOREIGN KEY (dominio_id) REFERENCES dominios (dominio_id)
 );
 
-CREATE TABLE clientes (
-    cliente_id INT,
+CREATE TABLE articuloapp_bd.clientes (
+    cliente_id INT AUTO_INCREMENT,
     nombre VARCHAR(200),
     direccion VARCHAR(100),
     telefono VARCHAR(10),
@@ -27,8 +25,8 @@ CREATE TABLE clientes (
     PRIMARY KEY (cliente_id)
 );
 
-CREATE TABLE articulos (
-    articulo_id INT,
+CREATE TABLE articuloapp_bd.articulos (
+    articulo_id INT AUTO_INCREMENT,
     nombre VARCHAR(100),
     tipo INT,
     estado INT,
@@ -36,8 +34,8 @@ CREATE TABLE articulos (
     PRIMARY KEY (articulo_id)
 );
 
-CREATE TABLE articulos_clientes (
-    articulo_cliente_id INT,
+CREATE TABLE articuloapp_bd.articulos_clientes (
+    articulo_cliente_id INT AUTO_INCREMENT,
     articulo_id INT,
     cliente_id INT,
     fecha_publicacion DATETIME,
@@ -47,8 +45,8 @@ CREATE TABLE articulos_clientes (
     FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id)
 );
 
-CREATE TABLE notificaciones (
-  notificacion_id int,
+CREATE TABLE articuloapp_bd.notificaciones (
+  notificacion_id int AUTO_INCREMENT,
   remitente int,
   destinatario int,
   mensaje varchar(200),
@@ -58,8 +56,8 @@ CREATE TABLE notificaciones (
   FOREIGN KEY (destinatario) REFERENCES clientes (cliente_id)
 );
 
-CREATE TABLE solicitudes (
-    solicitud_id INT,
+CREATE TABLE articuloapp_bd.solicitudes (
+    solicitud_id INT AUTO_INCREMENT,
     codigo VARCHAR(10),
     tipo INT,
     articulo_cliente_remitente INT,
@@ -71,10 +69,10 @@ CREATE TABLE solicitudes (
     FOREIGN KEY (articulo_cliente_destinatario) REFERENCES articulos_clientes (articulo_cliente_id)
 );
 
-CREATE TABLE usuarios (
-    usuario_id INT,
+CREATE TABLE articuloapp_bd.usuarios (
+    usuario_id INT AUTO_INCREMENT,
     nombre VARCHAR(50),
-    contraseña VARCHAR(10),
+    contrasena VARCHAR(10),
     estado INT,
     foto VARCHAR(200),
     cliente_id INT,

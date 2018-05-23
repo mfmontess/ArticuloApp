@@ -5,7 +5,6 @@
  */
 package WebServices;
 
-import static BLL.Utilidades.ToJson;
 import DAL.ClienteDAO;
 import STL.Cliente;
 import STL.Enumeraciones;
@@ -38,7 +37,7 @@ public class ClientesWS {
     public RespuestaWS RegistrarCliente(@WebParam(name = "cliente") Cliente cliente) {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
-            respuesta.setObjetoRespuesta(ToJson(cliente));
+            respuesta.setObjetoRespuesta(cliente);
             new ClienteDAO().Registrar(cliente);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
@@ -58,7 +57,7 @@ public class ClientesWS {
     public RespuestaWS ActualizarCliente(@WebParam(name = "cliente") Cliente cliente) {
         RespuestaWS respuesta = new RespuestaWS();
         try{
-            respuesta.setObjetoRespuesta(ToJson(cliente));
+            respuesta.setObjetoRespuesta(cliente);
             new ClienteDAO().Actualizar(cliente);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){

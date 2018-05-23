@@ -5,7 +5,6 @@
  */
 package WebServices;
 
-import static BLL.Utilidades.ToJson;
 import STL.Cliente;
 import STL.Enumeraciones;
 import STL.RespuestaWS;
@@ -40,7 +39,7 @@ public class SolicitudesWS {
         
         RespuestaWS respuesta = new RespuestaWS();        
         try{
-            respuesta.setObjetoRespuesta(ToJson(solicitud));
+            respuesta.setObjetoRespuesta(solicitud);
             new DAL.SolicitudDAO().Registrar(solicitud);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
@@ -62,7 +61,7 @@ public class SolicitudesWS {
         RespuestaWS respuesta = new RespuestaWS();        
         try{
             List<Solicitud> solicitudes = new DAL.SolicitudDAO().ObtenerSolicitudesPorEstadoCliente(estado, cliente);
-            respuesta.setObjetoRespuesta(ToJson(solicitudes));
+            respuesta.setObjetoRespuesta(solicitudes);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());

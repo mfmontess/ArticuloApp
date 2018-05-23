@@ -9,6 +9,7 @@ import STL.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,7 +21,7 @@ public class ClienteDAO {
         Connection accessBD = Conexion.getConexion();
         UsuarioDAO objDAO = new UsuarioDAO();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, correo, usuario_id from clientes where cliente_id=?");
+            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, correo, usuario_id from articuloapp_bd.clientes where cliente_id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
@@ -33,10 +34,10 @@ public class ClienteDAO {
         return cliente;
     }
 
-    public void Registrar(Cliente cliente) {
+    public void Registrar(Cliente cliente) throws Exception {
         Connection accessBD = Conexion.getConexion();
         try{
-            String sql = "INSERT INTO clientes (nombre,telefono,correo,direccion) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO articuloapp_bd.clientes (nombre,telefono,correo,direccion) VALUES (?,?,?,?)";
             PreparedStatement ps = accessBD.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getTelefono());
@@ -51,6 +52,8 @@ public class ClienteDAO {
             
             ps.close();
             new UsuarioDAO().Registrar(cliente.getUsuario(), cliente.getId());
+        } catch(SQLException e){
+            throw new Exception(e.getMessage());
         } catch(Exception e){
             e.printStackTrace();
         }
@@ -59,7 +62,7 @@ public class ClienteDAO {
     public void Actualizar(Cliente cliente) {
         Connection accessBD = Conexion.getConexion();
         try{
-            String sql = "UPDATE clientes SET nombre=?, telefono=?, correo=?, direccion=? WHERE cliente_id=?";
+            String sql = "UPDATE articuloapp_bd.clientes SET nombre=?, telefono=?, correo=?, direccion=? WHERE cliente_id=?";
             PreparedStatement ps = accessBD.prepareCall(sql);
             ps.setString(1, cliente.getNombre());
             ps.setString(2, cliente.getTelefono());
