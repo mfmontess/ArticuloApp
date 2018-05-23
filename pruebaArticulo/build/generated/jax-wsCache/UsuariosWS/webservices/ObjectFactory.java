@@ -24,8 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _ActualizarUsuarioResponse_QNAME = new QName("http://WebServices/", "ActualizarUsuarioResponse");
     private final static QName _ObtenerUsuario_QNAME = new QName("http://WebServices/", "ObtenerUsuario");
     private final static QName _ObtenerUsuarioResponse_QNAME = new QName("http://WebServices/", "ObtenerUsuarioResponse");
+    private final static QName _ActualizarUsuario_QNAME = new QName("http://WebServices/", "ActualizarUsuario");
     private final static QName _HelloResponse_QNAME = new QName("http://WebServices/", "helloResponse");
     private final static QName _RegistrarUsuario_QNAME = new QName("http://WebServices/", "RegistrarUsuario");
     private final static QName _Hello_QNAME = new QName("http://WebServices/", "hello");
@@ -57,11 +59,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ActualizarUsuarioResponse }
+     * 
+     */
+    public ActualizarUsuarioResponse createActualizarUsuarioResponse() {
+        return new ActualizarUsuarioResponse();
+    }
+
+    /**
      * Create an instance of {@link HelloResponse }
      * 
      */
     public HelloResponse createHelloResponse() {
         return new HelloResponse();
+    }
+
+    /**
+     * Create an instance of {@link ActualizarUsuario }
+     * 
+     */
+    public ActualizarUsuario createActualizarUsuario() {
+        return new ActualizarUsuario();
     }
 
     /**
@@ -105,6 +123,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RespuestaWS }
+     * 
+     */
+    public RespuestaWS createRespuestaWS() {
+        return new RespuestaWS();
+    }
+
+    /**
      * Create an instance of {@link Usuario }
      * 
      */
@@ -113,11 +139,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RespuestaWS }
+     * Create an instance of {@link JAXBElement }{@code <}{@link ActualizarUsuarioResponse }{@code >}}
      * 
      */
-    public RespuestaWS createRespuestaWS() {
-        return new RespuestaWS();
+    @XmlElementDecl(namespace = "http://WebServices/", name = "ActualizarUsuarioResponse")
+    public JAXBElement<ActualizarUsuarioResponse> createActualizarUsuarioResponse(ActualizarUsuarioResponse value) {
+        return new JAXBElement<ActualizarUsuarioResponse>(_ActualizarUsuarioResponse_QNAME, ActualizarUsuarioResponse.class, null, value);
     }
 
     /**
@@ -136,6 +163,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://WebServices/", name = "ObtenerUsuarioResponse")
     public JAXBElement<ObtenerUsuarioResponse> createObtenerUsuarioResponse(ObtenerUsuarioResponse value) {
         return new JAXBElement<ObtenerUsuarioResponse>(_ObtenerUsuarioResponse_QNAME, ObtenerUsuarioResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ActualizarUsuario }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://WebServices/", name = "ActualizarUsuario")
+    public JAXBElement<ActualizarUsuario> createActualizarUsuario(ActualizarUsuario value) {
+        return new JAXBElement<ActualizarUsuario>(_ActualizarUsuario_QNAME, ActualizarUsuario.class, null, value);
     }
 
     /**

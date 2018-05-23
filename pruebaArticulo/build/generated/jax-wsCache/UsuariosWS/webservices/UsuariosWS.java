@@ -26,36 +26,36 @@ public interface UsuariosWS {
 
     /**
      * 
-     * @param name
+     * @param nombre
+     * @param contraseña
      * @return
-     *     returns java.lang.String
+     *     returns webservices.RespuestaWS
      */
-    @WebMethod
+    @WebMethod(operationName = "ObtenerUsuarioCliente")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "hello", targetNamespace = "http://WebServices/", className = "webservices.Hello")
-    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://WebServices/", className = "webservices.HelloResponse")
-    @Action(input = "http://WebServices/UsuariosWS/helloRequest", output = "http://WebServices/UsuariosWS/helloResponse")
-    public String hello(
-        @WebParam(name = "name", targetNamespace = "")
-        String name);
+    @RequestWrapper(localName = "ObtenerUsuarioCliente", targetNamespace = "http://WebServices/", className = "webservices.ObtenerUsuarioCliente")
+    @ResponseWrapper(localName = "ObtenerUsuarioClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerUsuarioClienteResponse")
+    @Action(input = "http://WebServices/UsuariosWS/ObtenerUsuarioClienteRequest", output = "http://WebServices/UsuariosWS/ObtenerUsuarioClienteResponse")
+    public RespuestaWS obtenerUsuarioCliente(
+        @WebParam(name = "nombre", targetNamespace = "")
+        String nombre,
+        @WebParam(name = "contrase\u00f1a", targetNamespace = "")
+        String contraseña);
 
     /**
      * 
-     * @param clienteID
      * @param usuario
      * @return
      *     returns webservices.RespuestaWS
      */
-    @WebMethod(operationName = "RegistrarUsuario")
+    @WebMethod(operationName = "ActualizarUsuario")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "RegistrarUsuario", targetNamespace = "http://WebServices/", className = "webservices.RegistrarUsuario")
-    @ResponseWrapper(localName = "RegistrarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.RegistrarUsuarioResponse")
-    @Action(input = "http://WebServices/UsuariosWS/RegistrarUsuarioRequest", output = "http://WebServices/UsuariosWS/RegistrarUsuarioResponse")
-    public RespuestaWS registrarUsuario(
+    @RequestWrapper(localName = "ActualizarUsuario", targetNamespace = "http://WebServices/", className = "webservices.ActualizarUsuario")
+    @ResponseWrapper(localName = "ActualizarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.ActualizarUsuarioResponse")
+    @Action(input = "http://WebServices/UsuariosWS/ActualizarUsuarioRequest", output = "http://WebServices/UsuariosWS/ActualizarUsuarioResponse")
+    public RespuestaWS actualizarUsuario(
         @WebParam(name = "usuario", targetNamespace = "")
-        Usuario usuario,
-        @WebParam(name = "clienteID", targetNamespace = "")
-        int clienteID);
+        Usuario usuario);
 
     /**
      * 
@@ -77,20 +77,35 @@ public interface UsuariosWS {
 
     /**
      * 
-     * @param nombre
-     * @param contraseña
+     * @param clienteID
+     * @param usuario
      * @return
      *     returns webservices.RespuestaWS
      */
-    @WebMethod(operationName = "ObtenerUsuarioCliente")
+    @WebMethod(operationName = "RegistrarUsuario")
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "ObtenerUsuarioCliente", targetNamespace = "http://WebServices/", className = "webservices.ObtenerUsuarioCliente")
-    @ResponseWrapper(localName = "ObtenerUsuarioClienteResponse", targetNamespace = "http://WebServices/", className = "webservices.ObtenerUsuarioClienteResponse")
-    @Action(input = "http://WebServices/UsuariosWS/ObtenerUsuarioClienteRequest", output = "http://WebServices/UsuariosWS/ObtenerUsuarioClienteResponse")
-    public RespuestaWS obtenerUsuarioCliente(
-        @WebParam(name = "nombre", targetNamespace = "")
-        String nombre,
-        @WebParam(name = "contrase\u00f1a", targetNamespace = "")
-        String contraseña);
+    @RequestWrapper(localName = "RegistrarUsuario", targetNamespace = "http://WebServices/", className = "webservices.RegistrarUsuario")
+    @ResponseWrapper(localName = "RegistrarUsuarioResponse", targetNamespace = "http://WebServices/", className = "webservices.RegistrarUsuarioResponse")
+    @Action(input = "http://WebServices/UsuariosWS/RegistrarUsuarioRequest", output = "http://WebServices/UsuariosWS/RegistrarUsuarioResponse")
+    public RespuestaWS registrarUsuario(
+        @WebParam(name = "usuario", targetNamespace = "")
+        Usuario usuario,
+        @WebParam(name = "clienteID", targetNamespace = "")
+        int clienteID);
+
+    /**
+     * 
+     * @param name
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "hello", targetNamespace = "http://WebServices/", className = "webservices.Hello")
+    @ResponseWrapper(localName = "helloResponse", targetNamespace = "http://WebServices/", className = "webservices.HelloResponse")
+    @Action(input = "http://WebServices/UsuariosWS/helloRequest", output = "http://WebServices/UsuariosWS/helloResponse")
+    public String hello(
+        @WebParam(name = "name", targetNamespace = "")
+        String name);
 
 }

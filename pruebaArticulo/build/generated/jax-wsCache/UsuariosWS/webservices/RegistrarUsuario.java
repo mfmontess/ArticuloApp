@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para RegistrarUsuario complex type.
+ * <p>Java class for RegistrarUsuario complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
  * &lt;complexType name="RegistrarUsuario">
@@ -37,7 +37,7 @@ public class RegistrarUsuario {
     protected int clienteID;
 
     /**
-     * Obtiene el valor de la propiedad usuario.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
@@ -49,7 +49,7 @@ public class RegistrarUsuario {
     }
 
     /**
-     * Define el valor de la propiedad usuario.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
@@ -61,7 +61,7 @@ public class RegistrarUsuario {
     }
 
     /**
-     * Obtiene el valor de la propiedad clienteID.
+     * Gets the value of the clienteID property.
      * 
      */
     public int getClienteID() {
@@ -69,7 +69,7 @@ public class RegistrarUsuario {
     }
 
     /**
-     * Define el valor de la propiedad clienteID.
+     * Sets the value of the clienteID property.
      * 
      */
     public void setClienteID(int value) {
