@@ -16,17 +16,35 @@ import java.sql.SQLException;
  * @author MICHAEL
  */
 public class ClienteDAO {
+    public Cliente ObtenerClientePorUsuarioId(int usuarioId){
+        Cliente cliente = null;
+        Connection accessBD = Conexion.getConexion();
+        UsuarioDAO objDAO = new UsuarioDAO();
+        try{
+            String sql = "select c.cliente_id, c.nombre, c.direccion, c.telefono, c.correo, u.usuario_id from articuloapp_bd.clientes c inner join articuloapp_bd.usuarios u on c.cliente_id = u.cliente_id where u.usuario_id=?";
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ps.setInt(1, usuarioId);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                cliente = new Cliente(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), objDAO.ObtenerUsuario(rs.getInt(6)));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return cliente;
+    }
     public Cliente ObtenerCliente(int id){
         Cliente cliente = null;
         Connection accessBD = Conexion.getConexion();
         UsuarioDAO objDAO = new UsuarioDAO();
         try{
-            PreparedStatement ps = accessBD.prepareCall("select nombre, direccion, telefono, correo, usuario_id from articuloapp_bd.clientes where cliente_id=?");
+            PreparedStatement ps = accessBD.prepareCall("select cliente_id, nombre, direccion, telefono, correo, usuario_id from articuloapp_bd.clientes where cliente_id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
-                cliente = new Cliente(id,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4), objDAO.ObtenerUsuario(rs.getInt(5)));
+                cliente = new Cliente(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), objDAO.ObtenerUsuario(rs.getInt(6)));
             }
         } catch(Exception e){
             e.printStackTrace();
@@ -77,5 +95,25 @@ public class ClienteDAO {
         } catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public Cliente ObtenerUsuarioCliente(String nombre, String contraseña) {
+        Cliente cliente = null;
+        Connection accessBD = Conexion.getConexion();
+        UsuarioDAO objDAO = new UsuarioDAO();
+        try{
+            String sql = "select c.cliente_id, c.nombre, c.direccion, c.telefono, c.correo, u.usuario_id from articuloapp_bd.clientes c inner join articuloapp_bd.usuarios u on c.cliente_id = u.cliente_id where u.nombre=? and u.contrasena=?";
+            PreparedStatement ps = accessBD.prepareCall(sql);
+            ps.setString(1, nombre);
+            ps.setString(2, contraseña);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                cliente = new Cliente(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5), objDAO.ObtenerUsuario(rs.getInt(6)));
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return cliente;
     }
 }

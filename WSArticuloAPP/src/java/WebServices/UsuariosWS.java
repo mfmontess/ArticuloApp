@@ -5,7 +5,9 @@
  */
 package WebServices;
 
+import DAL.ClienteDAO;
 import DAL.UsuarioDAO;
+import STL.Cliente;
 import STL.Enumeraciones;
 import STL.RespuestaWS;
 import STL.Usuario;
@@ -65,8 +67,30 @@ public class UsuariosWS {
                 throw new Exception("Combinación de nombre y contraseña invalida para el usuario");
             
             respuesta.setObjetoRespuesta(usuario);
-            Usuario usuariop = new Usuario();
-            usuariop = (Usuario) respuesta.getObjetoRespuesta();
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
+        } catch(Exception e){
+            respuesta.setMensaje(e.getMessage());
+            respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Fallida);
+        }
+        return respuesta;
+    }
+    
+    /**
+     * Metodo validar el cual obtiene un usuario deacuerdo al nombre y contraseña enviados, en caso de no encontrar alguno, retorna null
+     * @param nombre Nombre del usuario a validar
+     * @param contraseña Contraseña del usuario a validar
+     * @return Retorna objeto usuario con el nombre y contraseña enviados
+     */
+    @WebMethod(operationName = "ObtenerUsuarioCliente")
+    public RespuestaWS ObtenerUsuarioCliente(@WebParam(name = "nombre") String nombre,@WebParam(name = "contraseña") String contraseña) {
+        RespuestaWS respuesta = new RespuestaWS();        
+        try{
+            Cliente cliente = new ClienteDAO().ObtenerUsuarioCliente(nombre, contraseña);
+            
+            if(cliente == null)
+                throw new Exception("Combinación de nombre y contraseña invalida para el usuario");
+            
+            respuesta.setObjetoRespuesta(cliente);
             respuesta.setTipo(Enumeraciones.TiposRespuestaWS.Exitosa);
         } catch(Exception e){
             respuesta.setMensaje(e.getMessage());
