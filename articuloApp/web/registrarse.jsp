@@ -23,12 +23,12 @@
                     <a class="navbar-brand" href="index.jsp">Artículo app</a>
                 </div>
                 <div class="navbar">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse"
-                          data-target="#navbarSupportedContent"
-                          aria-controls="navbarSupportedContent" aria-expanded="false"
-                          aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,16 +73,16 @@
                                         </label>
                                     </div>
                                     <script>
-                                          var password, password2;
-                                          password = document.getElementById('contrasena');
-                                          password2 = document.getElementById('confirmarContrasena');
-                                          password.onchange = password2.onkeyup = passwordMatch;
-                                          function passwordMatch() {
-                                            if(password.value !== password2.value)
+                                        var password, password2;
+                                        password = document.getElementById('contrasena');
+                                        password2 = document.getElementById('confirmarContrasena');
+                                        password.onchange = password2.onkeyup = passwordMatch;
+                                        function passwordMatch() {
+                                            if (password.value !== password2.value)
                                                 password2.setCustomValidity('Las contraseñas no coinciden.');
                                             else
                                                 password2.setCustomValidity('');
-                                          }
+                                        }
                                     </script>
                                     <div class="form-group">
                                         <label for="nombreCliente">
@@ -108,9 +108,9 @@
                                 <footer class="text-center">
                                     <div class="form-group">
                                         <label for="terminos" class="form-check-label">
-                                          <a href="terminos.jsp">
-                                            <input id="condi" type="checkbox" class="form-check-input" name="terminos" value="" required> Acepta terminos y condiciones
-                                          </a>
+                                            <a href="terminos.jsp">
+                                                <input id="condi" type="checkbox" class="form-check-input" name="terminos" value="" required> Acepta terminos y condiciones
+                                            </a>
                                         </label>
                                     </div>
                                     <div class="form-group">

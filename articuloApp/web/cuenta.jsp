@@ -93,16 +93,16 @@
                                         </label>
                                     </div>
                                     <script>
-                                          var password, password2;
-                                          password = document.getElementById('contrasena');
-                                          password2 = document.getElementById('confirmarContrasena');
-                                          password.onchange = password2.onkeyup = passwordMatch;
-                                          function passwordMatch() {
-                                            if(password.value !== password2.value)
+                                        var password, password2;
+                                        password = document.getElementById('contrasena');
+                                        password2 = document.getElementById('confirmarContrasena');
+                                        password.onchange = password2.onkeyup = passwordMatch;
+                                        function passwordMatch() {
+                                            if (password.value !== password2.value)
                                                 password2.setCustomValidity('Las contraseñas no coinciden.');
                                             else
                                                 password2.setCustomValidity('');
-                                          }
+                                        }
                                     </script>
                                     <div class="form-group">
                                         <label for="correo">

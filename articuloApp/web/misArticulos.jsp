@@ -92,11 +92,11 @@
                 </div>
             </c:forEach>
             <section class="text-right">
-              <div class="btn-group btn-group-sm ">
-                  <a href="registrarArticulo.jsp">
-                    <button type="button"  class="btn btn-success"></i>Registrar artículo</button>
-                  </a>
-              </div>
+                <div class="btn-group btn-group-sm ">
+                    <a href="registrarArticulo.jsp">
+                        <button type="button"  class="btn btn-success"></i>Registrar artículo</button>
+                    </a>
+                </div>
             </section>
             <footer class="text-center">
                 <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
