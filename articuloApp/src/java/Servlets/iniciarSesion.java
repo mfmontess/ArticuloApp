@@ -1,10 +1,9 @@
-package Servlets;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package Servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebServiceRef;
-import webservices.*;
+import webservices.Cliente;
+import webservices.RespuestaWS;
+import webservices.TiposRespuestaWS;
+import webservices.Usuario;
 
 /**
  *
@@ -22,9 +23,6 @@ import webservices.*;
  */
 @WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
 public class iniciarSesion extends HttpServlet {
-    
-    //@WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl")
-    //private ArticulosWS_Service serviceArticulos;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,18 +38,29 @@ public class iniciarSesion extends HttpServlet {
         
         String nombre = request.getParameter("nombreUsuario");
         String contraseña = request.getParameter("contrasena");
+
         
         RespuestaWS respuesta = obtenerUsuario(nombre,contraseña);
+        HttpSession sesion= request.getSession();
         
         if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null){
-                HttpSession sesion= request.getSession();
                 Usuario usuario = new Usuario();
                 usuario = (Usuario) respuesta.getObjetoRespuesta();
                 sesion.setAttribute("ValidUsuario", usuario);
-                
-                request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
+                RespuestaWS respuestac = obtenerClientePorUsuarioId(usuario.getId());
+                System.out.println("respuestac: " + respuestac);
+                if (respuestac.getTipo() == TiposRespuestaWS.EXITOSA && respuestac.getObjetoRespuesta() != null){
+                    Cliente cliente = (Cliente) respuestac.getObjetoRespuesta();
+                    sesion.setAttribute("ValidCliente", cliente);
+                    request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
+                }else{
+                    sesion.setAttribute("error", respuesta.getMensaje());
+                    request.getRequestDispatcher("iniciarSesion.jsp").forward(request, response);
+                }
         }else{
-            response.sendRedirect("iniciarSesion.jsp");
+            System.out.println("Error no valida");
+            sesion.setAttribute("error", respuesta.getMensaje());
+            request.getRequestDispatcher("iniciarSesion.jsp").forward(request, response);
         }
     }
 
@@ -94,9 +103,16 @@ public class iniciarSesion extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private static RespuestaWS obtenerClientePorUsuarioId(int usuarioId) {
+        webservices.ClientesWS_Service service = new webservices.ClientesWS_Service();
+        webservices.ClientesWS port = service.getClientesWSPort();
+        return port.obtenerClientePorUsuarioId(usuarioId);
+    }
+
     private static RespuestaWS obtenerUsuario(java.lang.String nombre, java.lang.String contraseña) {
         webservices.UsuariosWS_Service service = new webservices.UsuariosWS_Service();
         webservices.UsuariosWS port = service.getUsuariosWSPort();
         return port.obtenerUsuario(nombre, contraseña);
     }
+
 }

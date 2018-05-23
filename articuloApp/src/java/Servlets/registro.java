@@ -11,13 +11,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import webservices.Cliente;
+import webservices.EstadosUsuario;
 import webservices.RespuestaWS;
 import webservices.TiposRespuestaWS;
+import webservices.Usuario;
 
 /**
  *
- * @author mmontes
+ * @author MICHAEL
  */
 @WebServlet(name = "registro", urlPatterns = {"/registro"})
 public class registro extends HttpServlet {
@@ -34,20 +37,39 @@ public class registro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String usuario = request.getParameter("usuario");
+        String strUsuario = request.getParameter("usuario");
         String password = request.getParameter("password");
         String nombre = request.getParameter("nombre");
         String email = request.getParameter("email");
         String direccion = request.getParameter("direccion");
         String telefono = request.getParameter("telefono");
         
-        Cliente cliente = null; //= new Cliente(nombre,direccion,telefono,email,new Usuario(usuario,password));
+        HttpSession sesion= request.getSession();
+        
+        Cliente cliente = new Cliente();
+        Usuario usuario = new Usuario();
+        
+        usuario.setContraseña(password);
+        usuario.setNombre(strUsuario);
+        usuario.setEstado(EstadosUsuario.ACTIVO);
+        
+        
+        cliente.setUsuario(usuario);
+        cliente.setNombre(nombre);
+        cliente.setDireccion(direccion);
+        cliente.setCorreo(email);
+        cliente.setTelefono(telefono);
+
         RespuestaWS respuesta = registrarCliente(cliente);
         
-        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null)
-                response.sendRedirect("iniciarSesion.jsp");
-        else
-            response.sendRedirect("registrarse.jsp");
+        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null){
+                sesion.setAttribute("ValidCliente", cliente);
+                request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
+        }
+        else{
+            sesion.setAttribute("error", respuesta.getMensaje());
+            request.getRequestDispatcher("registrarse.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
