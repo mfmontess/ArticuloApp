@@ -36,7 +36,7 @@
                         <li class="nav-item active"><a class="nav-link" href="index.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Finalidad
+                        <li class="nav-item"><a class="nav-link" href="finalidad.jsp">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="iniciarSesion.jsp">Iniciar

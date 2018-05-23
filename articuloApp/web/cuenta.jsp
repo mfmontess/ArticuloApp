@@ -35,7 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="indexIniciada.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Finalidad
+                        <li class="nav-item"><a class="nav-link" href="finalidadIniciada.jsp">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item dropdown active">

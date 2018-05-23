@@ -35,7 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="indexIniciada.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Finalidad
+                        <li class="nav-item"><a class="nav-link" href="finalidadIniciada.jsp">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item dropdown active">
@@ -62,7 +62,7 @@
             </nav>
 
             <div class="padding">
-                <h1 class="text-center">Mis solicitudes</h1>
+                <h1>Mis solicitudes</h1>
             </div>
             <c:forEach items="${solicitudes}" var="solicitud">
                 <div class="">
