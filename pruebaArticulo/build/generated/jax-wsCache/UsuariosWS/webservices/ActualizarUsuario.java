@@ -3,21 +3,20 @@ package webservices;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for RegistrarUsuarioResponse complex type.
+ * <p>Java class for ActualizarUsuario complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RegistrarUsuarioResponse">
+ * &lt;complexType name="ActualizarUsuario">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://WebServices/}respuestaWS" minOccurs="0"/>
+ *         &lt;element name="usuario" type="{http://WebServices/}usuario" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RegistrarUsuarioResponse", propOrder = {
-    "_return"
+@XmlType(name = "ActualizarUsuario", propOrder = {
+    "usuario"
 })
-public class RegistrarUsuarioResponse {
+public class ActualizarUsuario {
 
-    @XmlElement(name = "return")
-    protected RespuestaWS _return;
+    protected Usuario usuario;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the usuario property.
      * 
      * @return
      *     possible object is
-     *     {@link RespuestaWS }
+     *     {@link Usuario }
      *     
      */
-    public RespuestaWS getReturn() {
-        return _return;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the usuario property.
      * 
      * @param value
      *     allowed object is
-     *     {@link RespuestaWS }
+     *     {@link Usuario }
      *     
      */
-    public void setReturn(RespuestaWS value) {
-        this._return = value;
+    public void setUsuario(Usuario value) {
+        this.usuario = value;
     }
 
 }
