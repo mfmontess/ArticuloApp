@@ -68,7 +68,7 @@
                 <div class="">
                     <aside class="">
                         <div class="form-group">
-                            <%-- <img src="Image/${solicitud.articuloEmisor.foto}" class="img-thumbnail"alt=""> --%>
+                            <%-- <img src="Image/${articulo.foto}" class="img-thumbnail"alt=""> --%>
                             <img src="Image/libro.jpg" class="portadas" alt="">
                         </div>
                     </aside>
@@ -77,7 +77,7 @@
                     <fieldset class="scheduler-border">
                         <legend class="scheduler-border">Descripción del articulo</legend>
                         <article class="padding">
-                            <%-- <p class="text-justify">${solicitud.descripcion}</p> --%>
+                            <%-- <p class="text-justify">${articulo.nombre}</p> --%>
                             <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </article>
                         <footer class="text-right">

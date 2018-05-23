@@ -64,6 +64,16 @@ input::-webkit-input-placeholder {
     cursor: pointer;
 }
 
+.image-upload2 > input {
+    display: none;
+}
+
+.image-upload2 img {
+    margin:auto;
+    width: 180px;
+    cursor: pointer;
+}
+
 .portadas {
   /* margin-left: 40px; */
   margin: auto;
