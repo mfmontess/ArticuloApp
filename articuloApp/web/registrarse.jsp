@@ -72,6 +72,18 @@
                                             <input type="password" class="form-control" name="confirmarContrasena" value="" placeholder="Confirmar Contraseña" id="confirmarContrasena" required>
                                         </label>
                                     </div>
+                                    <script>
+                                          var password, password2;
+                                          password = document.getElementById('contrasena');
+                                          password2 = document.getElementById('confirmarContrasena');
+                                          password.onchange = password2.onkeyup = passwordMatch;
+                                          function passwordMatch() {
+                                            if(password.value !== password2.value)
+                                                password2.setCustomValidity('Las contraseñas no coinciden.');
+                                            else
+                                                password2.setCustomValidity('');
+                                          }
+                                    </script>
                                     <div class="form-group">
                                         <label for="nombreCliente">
                                             <input type="text" class="form-control" name="nombreCliente" value="" placeholder="Nombre Cliente" id="nombreCliente" required autofocus>
@@ -96,7 +108,9 @@
                                 <footer class="text-center">
                                     <div class="form-group">
                                         <label for="terminos" class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" name="terminos" value="" required> Acepta terminos y condiciones
+                                          <a href="terminos.jsp">
+                                            <input id="condi" type="checkbox" class="form-check-input" name="terminos" value="" required> Acepta terminos y condiciones
+                                          </a>
                                         </label>
                                     </div>
                                     <div class="form-group">

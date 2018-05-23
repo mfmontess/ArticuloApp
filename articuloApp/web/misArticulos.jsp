@@ -52,7 +52,7 @@
                                 <a class="dropdown-item" href="index.jsp">Cerrar sesión</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Artí­culos disponibles
+                        <li class="nav-item"><a class="nav-link" href="articulosDisponibles.jsp">Artí­culos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Ayuda
@@ -91,6 +91,13 @@
                     </fieldset>
                 </div>
             </c:forEach>
+            <section class="text-right">
+              <div class="btn-group btn-group-sm ">
+                  <a href="registrarArticulo.jsp">
+                    <button type="button"  class="btn btn-success"></i>Registrar artículo</button>
+                  </a>
+              </div>
+            </section>
             <footer class="text-center">
                 <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
             </footer>

@@ -51,7 +51,7 @@
                                 <a class="dropdown-item" href="index.jsp">Cerrar sesión</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Artículos disponibles
+                        <li class="nav-item"><a class="nav-link" href="articulosDisponibles.jsp">Artículos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Ayuda
@@ -84,14 +84,26 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="contrasena">
-                                            <input type="password" class="form-control" name="contrasena" value="" placeholder="Contraseña" id="contrasena" required>
+                                            <input type="password" class="form-control" name="contrasena" value="" placeholder="Contraseña" id="contrasena">
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirmarContrasena">
-                                            <input type="password" class="form-control" name="confirmarContrasena" value="" placeholder="Confirmar Contraseña" id="confirmarContrasena" required>
+                                            <input type="password" class="form-control" name="confirmarContrasena" value="" placeholder="Confirmar Contraseña" id="confirmarContrasena">
                                         </label>
                                     </div>
+                                    <script>
+                                          var password, password2;
+                                          password = document.getElementById('contrasena');
+                                          password2 = document.getElementById('confirmarContrasena');
+                                          password.onchange = password2.onkeyup = passwordMatch;
+                                          function passwordMatch() {
+                                            if(password.value !== password2.value)
+                                                password2.setCustomValidity('Las contraseñas no coinciden.');
+                                            else
+                                                password2.setCustomValidity('');
+                                          }
+                                    </script>
                                     <div class="form-group">
                                         <label for="correo">
                                             <input type="email" name="correo" class="form-control" value="" placeholder="Correo Electrónico" id="correo" required>

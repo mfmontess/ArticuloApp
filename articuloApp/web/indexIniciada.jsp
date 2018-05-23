@@ -51,7 +51,7 @@
                                 <a class="dropdown-item" href="index.jsp">Cerrar sesión</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Artículos disponibles
+                        <li class="nav-item"><a class="nav-link" href="articulosDisponibles.jsp">Artículos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Ayuda
