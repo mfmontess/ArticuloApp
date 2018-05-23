@@ -6,24 +6,19 @@
 package Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import webservices.Cliente;
-import webservices.EstadosUsuario;
-import webservices.RespuestaWS;
-import webservices.TiposRespuestaWS;
-import webservices.Usuario;
 
 /**
  *
- * @author MICHAEL
+ * @author MANUEL SANCHEZ
  */
-@WebServlet(name = "registro", urlPatterns = {"/registro"})
-public class registro extends HttpServlet {
+@WebServlet(name = "cuenta", urlPatterns = {"/cuenta"})
+public class cuenta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,40 +31,13 @@ public class registro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String strUsuario = request.getParameter("usuario");
-        String password = request.getParameter("password");
+//        String foto = request.getParameter(name);
         String nombre = request.getParameter("nombre");
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
         String direccion = request.getParameter("direccion");
         String telefono = request.getParameter("telefono");
-        
-        HttpSession sesion= request.getSession();
-        
-        Cliente cliente = new Cliente();
-        Usuario usuario = new Usuario();
-        
-        usuario.setContraseña(password);
-        usuario.setNombre(strUsuario);
-        usuario.setEstado(EstadosUsuario.ACTIVO);
-        
-        
-        cliente.setUsuario(usuario);
-        cliente.setNombre(nombre);
-        cliente.setDireccion(direccion);
-        cliente.setCorreo(email);
-        cliente.setTelefono(telefono);
 
-        RespuestaWS respuesta = registrarCliente(cliente);
-        
-        if (respuesta.getTipo() == TiposRespuestaWS.EXITOSA && respuesta.getObjetoRespuesta() != null){
-                sesion.setAttribute("ValidCliente", cliente);
-                request.getRequestDispatcher("indexIniciada.jsp").forward(request, response);
-        }
-        else{
-            sesion.setAttribute("error", respuesta.getMensaje());
-            request.getRequestDispatcher("registrarse.jsp").forward(request, response);
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -110,11 +78,5 @@ public class registro extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private static RespuestaWS registrarCliente(webservices.Cliente cliente) {
-        webservices.ClientesWS_Service service = new webservices.ClientesWS_Service();
-        webservices.ClientesWS port = service.getClientesWSPort();
-        return port.registrarCliente(cliente);
-    }
 
 }

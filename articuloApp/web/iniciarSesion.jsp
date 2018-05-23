@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <%@page contentType="text/html"%>
         <%@page pageEncoding="UTF-8"%>
@@ -23,12 +23,12 @@
                     <a class="navbar-brand" href="index.jsp">Artículo app</a>
                 </div>
                 <div class="navbar">
-                    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse"
+                          data-target="#navbarSupportedContent"
+                          aria-controls="navbarSupportedContent" aria-expanded="false"
+                          aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,7 +36,7 @@
                         <li class="nav-item"><a class="nav-link" href="index.jsp">Inicio
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Finalidad
+                        <li class="nav-item"><a class="nav-link" href="finalidad.jsp">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item active"><a class="nav-link" href="iniciarSesion.jsp">Iniciar
@@ -58,11 +58,9 @@
                             <form class="form-horizontal" role="form" method="POST" action="iniciarSesion">
                                 <div class="center-input">
                                     <div class="form-group">
-
                                         <label class="" for="nombreUsuario">
                                             <input type="text" class="form-control" name="nombreUsuario" value="" placeholder="Usuario" id="nombreUsuario" required autofocus>
                                         </label>
-
                                     </div>
                                     <div class="form-group">
                                         <label for="contrasena">

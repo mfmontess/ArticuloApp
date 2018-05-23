@@ -39,7 +39,7 @@
                         <li class="nav-item"><a class="nav-link" href="finalidadIniciada.jsp">Finalidad
                                 <span class="sr-only">(current)</span>
                             </a></li>
-                        <li class="nav-item dropdown active">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Mi Perfil
                             </a>
@@ -52,7 +52,7 @@
                                 <a class="dropdown-item" href="index.jsp">Cerrar sesión</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="articulosDisponibles.jsp">Artí­culos disponibles
+                        <li class="nav-item active"><a class="nav-link" href="articulosDisponibles.jsp">Artí­culos disponibles
                                 <span class="sr-only">(current)</span>
                             </a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Ayuda
@@ -62,7 +62,7 @@
                 </div>
             </nav>
             <div class="padding">
-                <h1 class="text-center">Mis artículos</h1>
+                <h1 class="text-center">Artículos disponibles para intercambio</h1>
             </div>
             <c:forEach items="${articulos}" var="articulo">
                 <div class="">
@@ -82,22 +82,12 @@
                         </article>
                         <footer class="text-right">
                             <div class="btn-group btn-group-sm">
-                                <button type="button" class="btn btn-success">Editar</button>
-                                <button type="button" class="btn btn-success">Donar</button>
-                                <button type="button" class="btn btn-success">Intercambiar</button>
-                                <button type="button" class="btn btn-danger">Eliminar</button>
+                                <button type="button" class="btn btn-success">Solicitar intercambio</button>
                             </div>
                         </footer>
                     </fieldset>
                 </div>
             </c:forEach>
-            <section class="text-right">
-                <div class="btn-group btn-group-sm ">
-                    <a href="registrarArticulo.jsp">
-                        <button type="button"  class="btn btn-success"></i>Registrar artículo</button>
-                    </a>
-                </div>
-            </section>
             <footer class="text-center">
                 <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
             </footer>

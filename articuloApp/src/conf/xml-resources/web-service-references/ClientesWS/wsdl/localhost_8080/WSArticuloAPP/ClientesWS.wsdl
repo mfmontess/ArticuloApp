@@ -16,6 +16,18 @@
 <message name="helloResponse">
 <part name="parameters" element="tns:helloResponse"/>
 </message>
+<message name="ActualizarCliente">
+<part name="parameters" element="tns:ActualizarCliente"/>
+</message>
+<message name="ActualizarClienteResponse">
+<part name="parameters" element="tns:ActualizarClienteResponse"/>
+</message>
+<message name="ObtenerClientePorUsuarioId">
+<part name="parameters" element="tns:ObtenerClientePorUsuarioId"/>
+</message>
+<message name="ObtenerClientePorUsuarioIdResponse">
+<part name="parameters" element="tns:ObtenerClientePorUsuarioIdResponse"/>
+</message>
 <portType name="ClientesWS">
 <operation name="RegistrarCliente">
 <input wsam:Action="http://WebServices/ClientesWS/RegistrarClienteRequest" message="tns:RegistrarCliente"/>
@@ -24,6 +36,14 @@
 <operation name="hello">
 <input wsam:Action="http://WebServices/ClientesWS/helloRequest" message="tns:hello"/>
 <output wsam:Action="http://WebServices/ClientesWS/helloResponse" message="tns:helloResponse"/>
+</operation>
+<operation name="ActualizarCliente">
+<input wsam:Action="http://WebServices/ClientesWS/ActualizarClienteRequest" message="tns:ActualizarCliente"/>
+<output wsam:Action="http://WebServices/ClientesWS/ActualizarClienteResponse" message="tns:ActualizarClienteResponse"/>
+</operation>
+<operation name="ObtenerClientePorUsuarioId">
+<input wsam:Action="http://WebServices/ClientesWS/ObtenerClientePorUsuarioIdRequest" message="tns:ObtenerClientePorUsuarioId"/>
+<output wsam:Action="http://WebServices/ClientesWS/ObtenerClientePorUsuarioIdResponse" message="tns:ObtenerClientePorUsuarioIdResponse"/>
 </operation>
 </portType>
 <binding name="ClientesWSPortBinding" type="tns:ClientesWS">
@@ -38,6 +58,24 @@
 </output>
 </operation>
 <operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ActualizarCliente">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ObtenerClientePorUsuarioId">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
