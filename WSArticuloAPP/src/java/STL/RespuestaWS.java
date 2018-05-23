@@ -10,24 +10,24 @@ package STL;
  * @author MICHAEL
  */
 public class RespuestaWS {
-    private String objetoRespuesta;
+    private Object objetoRespuesta;
     private Enumeraciones.TiposRespuestaWS tipo;
     private String mensaje;
 
     public RespuestaWS() {
     }
 
-    public RespuestaWS(String objetoRespuesta, Enumeraciones.TiposRespuestaWS tipo, String mensaje) {
+    public RespuestaWS(Object objetoRespuesta, Enumeraciones.TiposRespuestaWS tipo, String mensaje) {
         this.objetoRespuesta = objetoRespuesta;
         this.tipo = tipo;
         this.mensaje = mensaje;
     }
 
-    public String getObjetoRespuesta() {
+    public Object getObjetoRespuesta() {
         return objetoRespuesta;
     }
 
-    public void setObjetoRespuesta(String objetoRespuesta) {
+    public void setObjetoRespuesta(Object objetoRespuesta) {
         this.objetoRespuesta = objetoRespuesta;
     }
 

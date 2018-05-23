@@ -40,7 +40,7 @@
 
 <xs:complexType name="cliente">
 <xs:sequence>
-<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
 <xs:element name="direccion" type="xs:string" minOccurs="0"/>
 <xs:element name="id" type="xs:int"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>

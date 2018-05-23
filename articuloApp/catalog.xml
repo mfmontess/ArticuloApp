@@ -4,8 +4,8 @@
     <system systemId="http://localhost:8080/WSMoviesColombia/WSUsuarios?xsd=1" uri="src/conf/xml-resources/web-service-references/WSUsuarios/wsdl/localhost_8080/WSMoviesColombia/WSUsuarios.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ClientesWS?wsdl" uri="src/conf/xml-resources/web-service-references/ClientesWS/wsdl/localhost_8080/WSArticuloAPP/ClientesWS.wsdl"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ClientesWS?xsd=1" uri="src/conf/xml-resources/web-service-references/ClientesWS/wsdl/localhost_8080/WSArticuloAPP/ClientesWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/WSArticuloAPP/UsuariosWS?wsdl" uri="src/conf/xml-resources/web-service-references/UsuariosWS/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.wsdl"/>
-    <system systemId="http://localhost:8080/WSArticuloAPP/UsuariosWS?xsd=1" uri="src/conf/xml-resources/web-service-references/UsuariosWS/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ArticulosWS?wsdl" uri="src/conf/xml-resources/web-service-references/ArticulosWS/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.wsdl"/>
     <system systemId="http://localhost:8080/WSArticuloAPP/ArticulosWS?xsd=1" uri="src/conf/xml-resources/web-service-references/ArticulosWS/wsdl/localhost_8080/WSArticuloAPP/ArticulosWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/WSArticuloAPP/UsuariosWS?wsdl" uri="src/conf/xml-resources/web-service-references/UsuariosWS/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.wsdl"/>
+    <system systemId="http://localhost:8080/WSArticuloAPP/UsuariosWS?xsd=1" uri="src/conf/xml-resources/web-service-references/UsuariosWS/wsdl/localhost_8080/WSArticuloAPP/UsuariosWS.xsd_1.xsd"/>
 </catalog>
