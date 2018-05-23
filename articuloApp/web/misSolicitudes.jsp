@@ -60,8 +60,9 @@
                     </ul>
                 </div>
             </nav>
+
             <div class="padding">
-              <h1 class="text-center">Mis solicitudes</h1>
+                <h1 class="text-center">Mis solicitudes</h1>
             </div>
             <c:forEach items="${solicitudes}" var="solicitud">
                 <div class="">
@@ -89,9 +90,9 @@
                     </fieldset>
                 </div>
             </c:forEach>
+            <footer class="text-center">
+                <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
+            </footer>
         </div>
-        <footer class="text-center">
-            <small class="text-center">&copy;2018 derechos de ChechoSoft Colombia</small>
-        </footer>
     </body>
 </html>
