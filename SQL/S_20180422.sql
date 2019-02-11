@@ -21,7 +21,6 @@ CREATE TABLE articuloapp_bd.clientes (
     nombre VARCHAR(200),
     direccion VARCHAR(100),
     telefono VARCHAR(10),
-    correo VARCHAR(100),
     PRIMARY KEY (cliente_id)
 );
 
@@ -74,6 +73,7 @@ CREATE TABLE articuloapp_bd.usuarios (
     nombre VARCHAR(50),
     contrasena VARCHAR(10),
     estado INT,
+    correo VARCHAR(100),
     foto VARCHAR(200),
     cliente_id INT,
     PRIMARY KEY (usuario_id),

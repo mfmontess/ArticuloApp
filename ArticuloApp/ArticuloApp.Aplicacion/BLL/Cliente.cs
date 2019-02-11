@@ -14,7 +14,8 @@ namespace ArticuloApp.Aplicacion.BLL
 
         public int Registrar(Entidades.Cliente prmobjCliente)
         {
-            return clienteDAL.Registrar(prmobjCliente);
+            prmobjCliente.id = clienteDAL.Registrar(prmobjCliente);
+            return prmobjCliente.id;
         }
 
         public void Actualizar(Entidades.Cliente prmobjCliente)

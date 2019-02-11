@@ -21,7 +21,8 @@
         public int Registrar(Entidades.Usuario prmobjUsuario)
         {
             prmobjUsuario.cliente.id = new Cliente().Registrar(prmobjUsuario.cliente);
-            return usuarioDAL.Registrar(prmobjUsuario);
+            prmobjUsuario.id = usuarioDAL.Registrar(prmobjUsuario);
+            return prmobjUsuario.id;
         }
     }
 }

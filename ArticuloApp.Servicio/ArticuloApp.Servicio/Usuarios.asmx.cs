@@ -32,10 +32,9 @@ namespace ArticuloApp.Servicio
         }
 
         [WebMethod]
-        public Cliente Autenticar(string prmstrUsuario, string prmstrClave)
+        public Usuario Autenticar(string prmstrUsuario, string prmstrClave)
         {
-            Usuario usuario = new Aplicacion.BLL.Usuario().Consultar(prmstrUsuario, prmstrClave);
-            throw new NotImplementedException();
+            return new Aplicacion.BLL.Usuario().ConsultarLogin(prmstrUsuario, prmstrClave);
         }
     }
 }
