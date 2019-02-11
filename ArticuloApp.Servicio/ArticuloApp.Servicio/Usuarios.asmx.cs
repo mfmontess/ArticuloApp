@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ArticuloApp.Entidades;
+using System;
+using System.Configuration;
 using System.Web.Services;
 
 namespace ArticuloApp.Servicio
@@ -24,15 +23,19 @@ namespace ArticuloApp.Servicio
         }
 
         [WebMethod]
-        public string Registrar()
+        public Usuario Registrar(string prmstrUsuario, string prmstrClave, string prmstrCorreo, string prmstrNombre, string prmstrDireccion, string prmstrTelefono, string prmstrCiudad)
         {
-            return "Hola a todos";
+            Usuario usuario = new Usuario(prmstrUsuario, prmstrClave, prmstrCorreo, new Cliente(prmstrNombre, prmstrDireccion, prmstrTelefono, prmstrCiudad));
+            string cadena = ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString;
+            new Aplicacion.BLL.Usuario().Registrar(usuario);
+            return usuario;
         }
 
         [WebMethod]
-        public string Autenticar(string prmstrUsuario, string prmstrClave)
+        public Cliente Autenticar(string prmstrUsuario, string prmstrClave)
         {
-            return $"Felicidades se acaba de autenticar el usuario : {prmstrUsuario}";
+            Usuario usuario = new Aplicacion.BLL.Usuario().Consultar(prmstrUsuario, prmstrClave);
+            throw new NotImplementedException();
         }
     }
 }
