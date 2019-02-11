@@ -5,7 +5,15 @@ namespace ArticuloApp.Entidades
     [Serializable]
     public class Cliente
     {
-        public Cliente() { }
+        public Cliente()
+        {
+            this.id = default(int);
+            this.direccion = string.Empty;
+            this.telefono = string.Empty;
+            this.nombre = string.Empty;
+            this.ciudad = string.Empty;
+        }
+
         public Cliente(string prmstrNombre, string prmstrDireccion, string prmstrTelefono, string prmstrCiudad)
         {
             this.direccion = prmstrDireccion;

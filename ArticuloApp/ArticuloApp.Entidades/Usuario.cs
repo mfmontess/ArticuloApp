@@ -5,7 +5,15 @@ namespace ArticuloApp.Entidades
     [Serializable]
     public class Usuario
     {
-        public Usuario() { }
+        public Usuario()
+        {
+            this.id = default(int);
+            this.nombre = string.Empty;
+            this.contraseña = string.Empty;
+            this.correo = string.Empty;
+            this.estado = Enumeraciones.EstadosUsuario.Inactivo;
+            this.cliente = new Cliente();
+        }
         public Usuario(string prmstrUsuario, string prmstrClave, string prmstrCorreo, Cliente prmobjCliente)
         {
             this.nombre = prmstrUsuario;

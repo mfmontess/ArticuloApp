@@ -1,4 +1,7 @@
-﻿namespace ArticuloApp.Aplicacion.BLL
+﻿using System;
+using ArticuloApp.Entidades;
+
+namespace ArticuloApp.Aplicacion.BLL
 {
     public class Cliente
     {
@@ -19,9 +22,9 @@
             clienteDAL.Actualizar(prmobjCliente);
         }
 
-        public Entidades.Cliente ConsultarPorUsuario(int prmintUsuarioId)
+        internal Entidades.Cliente ConsultarPorId(int prmintClienteId)
         {
-            return clienteDAL.ConsultarPorUsuario(prmintUsuarioId);
+            return clienteDAL.ConsultarPorId(prmintClienteId);
         }
     }
 }

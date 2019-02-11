@@ -9,9 +9,13 @@
             usuarioDAL = new DAL.Usuario();
         }
 
-        public Entidades.Usuario Consultar(string prmstrUsuario, string prmstrClave)
+        public Entidades.Usuario ConsultarLogin(string prmstrUsuario, string prmstrClave)
         {
-            return usuarioDAL.Consultar(prmstrUsuario, prmstrClave);
+            Entidades.Usuario usuario = usuarioDAL.Consultar(prmstrUsuario, prmstrClave);
+
+            if (usuario != null)
+                usuario.cliente = new Cliente().ConsultarPorId(usuario.cliente.id);
+            return usuario;
         }
 
         public int Registrar(Entidades.Usuario prmobjUsuario)
