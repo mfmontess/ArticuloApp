@@ -1,0 +1,4 @@
+C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp.Web\ArticuloApp.Web.Integrador\bin\Debug\ArticuloApp.Web.Integrador.dll
+C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp.Web\ArticuloApp.Web.Integrador\bin\Debug\ArticuloApp.Web.Integrador.pdb
+C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp.Web\ArticuloApp.Web.Integrador\obj\Debug\ArticuloApp.Web.Integrador.dll
+C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp.Web\ArticuloApp.Web.Integrador\obj\Debug\ArticuloApp.Web.Integrador.pdb

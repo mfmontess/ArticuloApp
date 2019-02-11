@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace ArticuloApp.Web
 {
     public partial class Sesion : System.Web.UI.Page
     {
+        Integrador.BLL.Usuario usuario = new Integrador.BLL.Usuario();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,8 +13,8 @@ namespace ArticuloApp.Web
 
         protected void btnAutenticar_Click(object sender, EventArgs e)
         {
-            string strUsuario = txtUsuario.Value;
-            string strClave = txtPassword.Value;
+            usuario.Autenticar(txtUsuario.Value, txtPassword.Value);
+            this.Response.Redirect("~/Solicitudes.aspx", false);
         }
     }
 }

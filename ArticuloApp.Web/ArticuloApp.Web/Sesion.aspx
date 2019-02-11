@@ -14,7 +14,7 @@
             <asp:Button runat="server" class="btn btn-primary btn-lg" ID="btnAutenticar" Text="Iniciar Sesión" OnClick="btnAutenticar_Click" />
         </p>
         <p>
-            <a>Registrarse</a>
+            <a href="Registro.aspx">Registrarse</a>
             &nbsp;
             <a>Olvide contraseña</a>
         </p>
