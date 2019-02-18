@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Articulo.cs" />
     <Compile Include="BLL\Cliente.cs" />
     <Compile Include="BLL\Usuario.cs" />
+    <Compile Include="DAL\Articulo.cs" />
     <Compile Include="DAL\Cliente.cs" />
     <Compile Include="DAL\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
