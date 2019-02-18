@@ -29,7 +29,6 @@ C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.S
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\obj\Debug\ArticuloApp.Servicio.csprojAssemblyReference.cache
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\obj\Debug\ArticuloApp.Servicio.csproj.CoreCompileInputs.cache
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\obj\Debug\ArticuloApp.Servicio.csproj.CopyComplete
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp.Servicio\ArticuloApp.Servicio\obj\Debug\ArticuloApp.Servicio.dll

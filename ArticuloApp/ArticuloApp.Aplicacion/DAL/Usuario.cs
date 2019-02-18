@@ -9,7 +9,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal Entidades.Usuario Consultar(string prmstrUsuario, string prmstrClave)
         {
             Entidades.Usuario usuario = null;
-            string query = $@"SELECT usuario_id, nombre, contrasena, estado, cliente_id FROM articuloapp_bd.usuarios
+            string query = $@"SELECT usuario_id, nombre, contrasena, correo, estado, cliente_id FROM articuloapp_bd.usuarios
                                 WHERE nombre='{prmstrUsuario}' AND contrasena='{prmstrClave}'";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -21,17 +21,31 @@ namespace ArticuloApp.Aplicacion.DAL
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        usuario = new Entidades.Usuario();
-                        usuario.id = reader.GetInt32(0);
-                        usuario.nombre = reader.GetString(1);
-                        usuario.contraseña = reader.GetString(2);
-                        usuario.estado = (Entidades.Enumeraciones.EstadosUsuario) reader.GetInt32(3);
-                        usuario.cliente.id = reader.GetInt32(4);
+                        reader.Read();
+
+                        try
+                        {
+                            usuario = new Entidades.Usuario();
+                            usuario.id = reader.GetInt32("usuario_id");
+                            usuario.nombre = reader.GetString("nombre");
+                            usuario.contraseña = reader.GetString("contrasena");
+                            usuario.correo = reader.GetString("correo");
+                            usuario.estado = (Entidades.Enumeraciones.EstadosUsuario)reader.GetInt32("estado");
+                            usuario.cliente.id = reader.GetInt32("cliente_id");
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception($"Imposible realizar la lectura del usuario consultado. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
+                        }
+                        finally
+                        {
+                            reader.Close();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Imposible realizar el registro de un cliente. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
+                    throw new Exception($"Imposible realizar la consulta del usuario. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
                 }
                 finally
                 {
@@ -44,8 +58,9 @@ namespace ArticuloApp.Aplicacion.DAL
         internal int Registrar(Entidades.Usuario prmobjUsuario)
         {
             int id = 0;
-            string query = $@"INSERT INTO articuloapp_bd.usuarios (nombre,contrasena,correo)
-                                VALUES ('{prmobjUsuario.nombre}','{prmobjUsuario.contraseña}','{prmobjUsuario.correo}')";
+            string query = $@"INSERT INTO articuloapp_bd.usuarios (nombre,contrasena,correo, cliente_id)
+                                VALUES ('{prmobjUsuario.nombre}','{prmobjUsuario.contraseña}','{prmobjUsuario.correo}',{prmobjUsuario.cliente.id});
+                                SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
             {

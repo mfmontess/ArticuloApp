@@ -1,7 +1,4 @@
-﻿using System;
-using ArticuloApp.Entidades;
-
-namespace ArticuloApp.Aplicacion.BLL
+﻿namespace ArticuloApp.Aplicacion.BLL
 {
     public class Cliente
     {

@@ -3,7 +3,6 @@ C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\obj\Debug\ArticuloApp.Entidades.csproj.CoreCompileInputs.cache
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\obj\Debug\ArticuloApp.Entidades.dll
 C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\obj\Debug\ArticuloApp.Entidades.pdb
-C:\Users\MICHAEL\Documents\GitHub\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\obj\Debug\ArticuloApp.Entidades.csprojAssemblyReference.cache
 C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\bin\Debug\ArticuloApp.Entidades.dll
 C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\bin\Debug\ArticuloApp.Entidades.pdb
 C:\Users\mmontes\Source\Repos\ArticuloApp\ArticuloApp\ArticuloApp.Entidades\obj\Debug\ArticuloApp.Entidades.csprojResolveAssemblyReference.cache

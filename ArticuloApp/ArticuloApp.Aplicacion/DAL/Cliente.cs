@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Configuration;
-using ArticuloApp.Entidades;
 
 namespace ArticuloApp.Aplicacion.DAL
 {
@@ -11,7 +10,8 @@ namespace ArticuloApp.Aplicacion.DAL
         {
             int id = 0;
             string query = $@"INSERT INTO articuloapp_bd.clientes (nombre,telefono,direccion)
-                                VALUES ('{prmobjCliente.nombre}','{prmobjCliente.telefono}','{prmobjCliente.direccion}')";
+                                VALUES ('{prmobjCliente.nombre}','{prmobjCliente.telefono}','{prmobjCliente.direccion}');
+                                SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
             {
@@ -35,7 +35,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal Entidades.Cliente ConsultarPorId(int prmintClienteId)
         {
             Entidades.Cliente cliente = null;
-            string query = $@"SELECT cliente_id , nombre, direccion , telefono FROM articuloapp_bd.clientes
+            string query = $@"SELECT cliente_id , nombre, direccion, telefono FROM articuloapp_bd.clientes
                                 WHERE cliente_id={prmintClienteId}";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -47,17 +47,28 @@ namespace ArticuloApp.Aplicacion.DAL
 
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        cliente = new Entidades.Cliente();
-                        cliente.id = reader.GetInt32(0);
-                        cliente.nombre = reader.GetString(1);
-                        cliente.direccion = reader.GetString(2);
-                        cliente.ciudad = reader.GetString(3);
-                        cliente.telefono = reader.GetString(4);
+                        reader.Read();
+                        try
+                        {
+                            cliente = new Entidades.Cliente();
+                            cliente.id = reader.GetInt32("cliente_id");
+                            cliente.nombre = reader.GetString("nombre");
+                            cliente.direccion = reader.GetString("direccion");
+                            cliente.telefono = reader.GetString("telefono");
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception($"Imposible realizar lectura del cliente consultado. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
+                        }
+                        finally
+                        {
+                            reader.Close();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Imposible realizar el registro de un cliente. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
+                    throw new Exception($"Imposible realizar la consulta de un cliente. Detalles del error: {ex.Message}. Source: {ex.Source}. StackTrace: {ex.StackTrace}");
                 }
                 finally
                 {
