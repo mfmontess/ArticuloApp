@@ -81,7 +81,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal void Actualizar(Entidades.Cliente prmobjCliente)
         {
             string query = $@"UPDATE articuloapp_bd.clientes
-                                SET nombre={prmobjCliente.nombre}, telefono={prmobjCliente.telefono}, direccion={prmobjCliente.direccion}
+                                SET nombre='{prmobjCliente.nombre}', telefono='{prmobjCliente.telefono}', direccion='{prmobjCliente.direccion}'
                                 WHERE cliente_id={prmobjCliente.id}";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
