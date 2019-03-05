@@ -31,7 +31,7 @@
         </p>
         <p>
             <asp:Button runat="server" class="btn btn-primary btn-lg" ID="btnActualizar" Text="Actualizar" OnClick="btnActualizar_Click"/>
-            <asp:Button runat="server" class="btn btn-primary btn-lg" ID="btnEliminar" Text="Eliminar cuenta" OnClick="btnEliminar_Click"/>
+            <asp:Button runat="server" class="btn btn-danger btn-lg" ID="btnEliminar" Text="Eliminar cuenta" OnClick="btnEliminar_Click"/>
         </p>
     </div>
 </asp:Content>
