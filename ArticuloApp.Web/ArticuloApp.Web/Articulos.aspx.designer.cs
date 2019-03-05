@@ -10,7 +10,7 @@
 namespace ArticuloApp.Web {
     
     
-    public partial class Solicitudes {
+    public partial class Articulos {
         
         /// <summary>
         /// btnImagen control.
@@ -31,39 +31,39 @@ namespace ArticuloApp.Web {
         protected global::System.Web.UI.WebControls.Label txtDescripcionArticulo;
         
         /// <summary>
-        /// txtNotificacion control.
+        /// btnDonar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtNotificacion;
+        protected global::System.Web.UI.WebControls.Button btnDonar;
         
         /// <summary>
-        /// btnAutenticar control.
+        /// btnIntercambiar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAutenticar;
+        protected global::System.Web.UI.WebControls.Button btnIntercambiar;
         
         /// <summary>
-        /// Button1 control.
+        /// btnEditar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnEditar;
         
         /// <summary>
-        /// Button2 control.
+        /// btnEliminar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnEliminar;
     }
 }
