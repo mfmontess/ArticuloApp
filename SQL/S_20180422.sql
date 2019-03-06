@@ -32,6 +32,7 @@ CREATE TABLE articuloapp_bd.articulos (
     estado INT,
     foto VARCHAR(200),
     fecha_publicacion DATETIME,
+    descripcion VARCHAR(500),
     PRIMARY KEY (articulo_id),
     FOREIGN KEY (cliente_id) REFERENCES clientes (cliente_id)
 );
@@ -49,7 +50,6 @@ CREATE TABLE articuloapp_bd.notificaciones (
 
 CREATE TABLE articuloapp_bd.solicitudes (
     solicitud_id INT AUTO_INCREMENT,
-    codigo VARCHAR(10),
     tipo INT,
     articulo_cliente_remitente INT,
     articulo_cliente_destinatario INT,

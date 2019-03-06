@@ -11,8 +11,8 @@ namespace ArticuloApp.Aplicacion.DAL
         internal int Registrar(Entidades.Articulo prmobjArticulo)
         {
             int id = 0;
-            string query = $@"INSERT INTO articuloapp_bd.articulos (nombre,estado,tipo,fecha_publicacion,foto,cliente_id)
-                                VALUES ('{prmobjArticulo.nombre}',{(int)prmobjArticulo.estado},{(int)prmobjArticulo.tipo}, '{prmobjArticulo.fechaPublicacion.ToString("yyyy-MM-dd HH:mm:ss")}', '{prmobjArticulo.foto}', {prmobjArticulo.propietario.id});
+            string query = $@"INSERT INTO articuloapp_bd.articulos (nombre,estado,tipo,fecha_publicacion,foto,cliente_id,descripcion)
+                                VALUES ('{prmobjArticulo.nombre}',{(int)prmobjArticulo.estado},{(int)prmobjArticulo.tipo}, '{prmobjArticulo.fechaPublicacion.ToString("yyyy-MM-dd HH:mm:ss")}', '{prmobjArticulo.foto}', {prmobjArticulo.propietario.id}, '{prmobjArticulo.descripcion}');
                                 SELECT LAST_INSERT_ID();";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -38,7 +38,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal void Actualizar(Entidades.Articulo prmobjArticulo)
         {
             string query = $@"UPDATE articuloapp_bd.articulos
-                                SET nombre='{prmobjArticulo.nombre}', estado={(int)prmobjArticulo.estado}, tipo={(int)prmobjArticulo.tipo}, foto='{prmobjArticulo.foto}', cliente_id={prmobjArticulo.propietario.id});
+                                SET nombre='{prmobjArticulo.nombre}', estado={(int)prmobjArticulo.estado}, tipo={(int)prmobjArticulo.tipo}, foto='{prmobjArticulo.foto}', cliente_id={prmobjArticulo.propietario.id}, descripcion='{prmobjArticulo.descripcion}');
                                 WHERE articulo_id={prmobjArticulo.id}";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -63,7 +63,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal List<Entidades.Articulo> ConsultarPorClienteId(int prmintClienteId)
         {
             List<Entidades.Articulo> lstArticulos = null;
-            string query = $@"select articulo_id, nombre, tipo, fecha_publicacion, estado, foto
+            string query = $@"select articulo_id, nombre, tipo, fecha_publicacion, estado, foto, descripcion
                     from articulos where cliente_id={prmintClienteId}";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -86,7 +86,7 @@ namespace ArticuloApp.Aplicacion.DAL
                                 articulo.tipo = (Enumeraciones.TiposArticulo) reader.GetInt32("tipo");
                                 articulo.foto = reader.GetString("foto");
                                 articulo.fechaPublicacion = reader.GetDateTime("fecha_publicacion");
-
+                                articulo.descripcion = reader.GetString("descripcion");
                                 articulo.propietario = new Entidades.Cliente();
                                 articulo.propietario.id = reader.GetInt32("cliente_id");
                                 lstArticulos.Add(articulo);
@@ -117,7 +117,7 @@ namespace ArticuloApp.Aplicacion.DAL
         internal List<Entidades.Articulo> ConsultarPorEstado(Enumeraciones.EstadosArticulo prmenumEstado)
         {
             List<Entidades.Articulo> lstArticulos = null;
-            string query = $@"select articulo_id, nombre, tipo, fecha_publicacion, estado, foto
+            string query = $@"select articulo_id, nombre, tipo, fecha_publicacion, estado, foto, descripcion
                     from articulos where estado={(int)prmenumEstado}";
 
             using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["ConnectionDBString"].ConnectionString))
@@ -140,7 +140,7 @@ namespace ArticuloApp.Aplicacion.DAL
                                 articulo.tipo = (Enumeraciones.TiposArticulo)reader.GetInt32("tipo");
                                 articulo.foto = reader.GetString("foto");
                                 articulo.fechaPublicacion = reader.GetDateTime("fecha_publicacion");
-
+                                articulo.descripcion = reader.GetString("descripcion");
                                 articulo.propietario = new Entidades.Cliente();
                                 articulo.propietario.id = reader.GetInt32("cliente_id");
                                 lstArticulos.Add(articulo);

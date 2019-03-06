@@ -13,9 +13,10 @@ namespace ArticuloApp.Entidades
             this.estado = Enumeraciones.EstadosArticulo.Activo;
             this.foto = string.Empty;
             this.propietario = new Cliente();
+            this.descripcion = string.Empty;
         }
 
-        public Articulo(string nombre, Enumeraciones.TiposArticulo tipo, DateTime fechaPublicacion, string foto, Cliente propietario)
+        public Articulo(string nombre, Enumeraciones.TiposArticulo tipo, DateTime fechaPublicacion, string foto, Cliente propietario, string descripcion)
         {
             this.id = default(int);
             this.nombre = nombre;
@@ -24,6 +25,7 @@ namespace ArticuloApp.Entidades
             this.estado = Enumeraciones.EstadosArticulo.Activo;
             this.foto = foto;
             this.propietario = propietario;
+            this.descripcion = descripcion;
         }
 
         public int id { get; set; }
@@ -33,5 +35,6 @@ namespace ArticuloApp.Entidades
         public Enumeraciones.EstadosArticulo estado { get; set; }
         public string foto { get; set; }
         public Cliente propietario { get; set; }
+        public string descripcion { get; set; }
     }
 }

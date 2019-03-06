@@ -16,6 +16,9 @@
 
         public enum EstadosSolicitud
         {
+            PorResponder,
+            Aceptada,
+            Rechazada
         }
 
         public enum TiposArticulo
@@ -36,6 +39,10 @@
 
         public enum EstadosNotificacion
         {
+            PorEnviar,
+            Enviada,
+            PorResponder,
+            Respondida
         }
 
         public enum TiposRespuestaWS
